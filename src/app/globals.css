@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+/* ── Webfonts (self-hosted) ───────────────────────────────────── */
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/fonts/BarlowCondensed-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/fonts/BarlowCondensed-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── DX Theme tokens ──────────────────────────────────────────── */
+
+@theme {
+  /* Colors — DX Blue (cobalt) */
+  --color-dx-blue-50: #EAF2FB;
+  --color-dx-blue-100: #CFE0F4;
+  --color-dx-blue-200: #9EC1E8;
+  --color-dx-blue-300: #6BA0DC;
+  --color-dx-blue-400: #3D82CD;
+  --color-dx-blue-500: #1F68B1;
+  --color-dx-blue-600: #155291;
+  --color-dx-blue-700: #0F4074;
+  --color-dx-blue-800: #0B3058;
+  --color-dx-blue-900: #07203D;
+
+  /* Colors — DX Navy */
+  --color-dx-navy-50: #E7E8EC;
+  --color-dx-navy-100: #C3C5CE;
+  --color-dx-navy-200: #8A8DA0;
+  --color-dx-navy-300: #4F5470;
+  --color-dx-navy-400: #2A3052;
+  --color-dx-navy-500: #13182E;
+  --color-dx-navy-600: #0F1426;
+  --color-dx-navy-700: #0B0F1D;
+  --color-dx-navy-800: #080B16;
+  --color-dx-navy-900: #04060E;
+
+  /* Colors — DX Steel */
+  --color-dx-steel-50: #F6F7F8;
+  --color-dx-steel-100: #ECEEF1;
+  --color-dx-steel-200: #D8DCE2;
+  --color-dx-steel-300: #BAC0CB;
+  --color-dx-steel-400: #929AAA;
+  --color-dx-steel-500: #6B7383;
+  --color-dx-steel-600: #4E5563;
+  --color-dx-steel-700: #383E4A;
+  --color-dx-steel-800: #262B34;
+  --color-dx-steel-900: #161A20;
+
+  /* Colors — Misc */
+  --color-dx-paper: #FAFBFC;
+  --color-dx-success-50: #E6F4EC;
+  --color-dx-success-500: #1E8E55;
+  --color-dx-success-700: #115A36;
+  --color-dx-warn-50: #FDF4E2;
+  --color-dx-warn-500: #C98318;
+  --color-dx-warn-700: #8A580A;
+  --color-dx-danger-50: #FCEBEB;
+  --color-dx-danger-500: #C8331F;
+  --color-dx-danger-700: #8B2014;
+  --color-dx-energy: #29A07A;
+
+  /* Font families */
+  --font-sans: "Barlow", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  /* Font sizes (px values to match design spec) */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 30px;
+  --text-3xl: 36px;
+  --text-4xl: 48px;
+  --text-5xl: 64px;
+  --text-6xl: 84px;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-eyebrow: 0.14em;
+
+  /* Line heights */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Border radius */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows (teintées navy) */
+  --shadow-xs: 0 1px 2px rgba(19, 24, 46, 0.06);
+  --shadow-sm: 0 2px 4px rgba(19, 24, 46, 0.08), 0 1px 2px rgba(19, 24, 46, 0.04);
+  --shadow-md: 0 6px 16px rgba(19, 24, 46, 0.10), 0 2px 4px rgba(19, 24, 46, 0.05);
+  --shadow-lg: 0 18px 40px rgba(19, 24, 46, 0.14), 0 4px 10px rgba(19, 24, 46, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(31, 104, 177, 0.30);
+
+  /* Spacing extras */
+  --spacing-18: 72px;
+  --spacing-88: 352px;
+
+  /* Transition timing */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasis: cubic-bezier(0.2, 0, 0, 1.2);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Transition duration */
+  --duration-120: 120ms;
+  --duration-180: 180ms;
+  --duration-240: 240ms;
+  --duration-360: 360ms;
+}
+
+/* ── Custom max-width utilities ───────────────────────────────── */
+
+@utility max-w-narrow {
+  max-width: 768px;
+}
+@utility max-w-text {
+  max-width: 1040px;
+}
+@utility max-w-wide {
+  max-width: 1280px;
+}
+@utility max-w-max-site {
+  max-width: 1440px;
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-dx-navy-700);
+  background-color: var(--color-dx-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── DX Utility Classes ───────────────────────────────────────── */
+
+@layer components {
+  /* Layout helpers */
+  .dx-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .dx-container {
+      padding-inline: 2rem;
+    }
+  }
+
+  .dx-section {
+    padding-block: 5rem;
+  }
+  @media (min-width: 1024px) {
+    .dx-section {
+      padding-block: 6rem;
+    }
+  }
+
+  /* Eyebrow label */
+  .dx-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-dx-blue-500);
+  }
+  .dx-eyebrow::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-dx-blue-500);
+    flex-shrink: 0;
+  }
+
+  /* Typography scale */
+  .dx-display {
+    font-family: var(--font-display);
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 1.0;
+  }
+  .dx-h1 {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .dx-h2 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .dx-h3 {
+    font-family: var(--font-sans);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .dx-h4 {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .dx-lead {
+    font-family: var(--font-sans);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .dx-body {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+  .dx-caption {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .dx-mono {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color 120ms cubic-bezier(0.2, 0, 0, 1),
+                border-color 120ms cubic-bezier(0.2, 0, 0, 1),
+                color 120ms cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .btn--lg {
+    padding: 14px 22px;
+    font-size: 16px;
+  }
+  .btn--primary {
+    background-color: var(--color-dx-blue-500);
+    color: #ffffff;
+    border-color: transparent;
+  }
+  .btn--primary:hover {
+    background-color: var(--color-dx-blue-600);
+  }
+  .btn--secondary {
+    background-color: #ffffff;
+    color: var(--color-dx-navy-500);
+    border-color: var(--color-dx-steel-200);
+  }
+  .btn--secondary:hover {
+    border-color: var(--color-dx-navy-500);
+  }
+  .btn--ghost {
+    background-color: transparent;
+    color: var(--color-dx-blue-500);
+    border-color: transparent;
+  }
+  .btn--ghost:hover {
+    background-color: var(--color-dx-blue-50);
+  }
+  .btn--inverse {
+    background-color: #ffffff;
+    color: var(--color-dx-navy-500);
+    border-color: transparent;
+  }
+  .btn--inverse:hover {
+    background-color: var(--color-dx-steel-50);
+  }
+}
+
+/* ── Focus states ─────────────────────────────────────────────── */
+
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(31, 104, 177, 0.3);
+  border-radius: 4px;
+}
+
+/* ── Scroll animation ─────────────────────────────────────────── */
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-rise {
+  animation: fade-rise 360ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* ── Diagonal stripe motif ────────────────────────────────────── */
+
+.dx-stripe {
+  position: absolute;
+  background-color: var(--color-dx-blue-500);
+  pointer-events: none;
+  transform: rotate(-50deg);
+  transform-origin: center;
+}

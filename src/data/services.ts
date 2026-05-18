@@ -1,0 +1,423 @@
+export type ServiceIconName =
+  | "Wrench"
+  | "BarChart3"
+  | "Cpu"
+  | "Activity"
+  | "Zap"
+  | "Shield"
+  | "Sparkles"
+  | "Users";
+
+export type ServiceKPI = {
+  value: string;
+  label: string;
+};
+
+export type ServiceProcess = {
+  step: string;
+  description: string;
+};
+
+export type Service = {
+  slug: string;
+  title: string;
+  category: string;
+  icon: ServiceIconName;
+  description: string;
+  tagline: string;
+  intro: string;
+  details: string;
+  features: string[];
+  process: ServiceProcess[];
+  kpis: ServiceKPI[];
+};
+
+export const services: Service[] = [
+  {
+    slug: "maintenance-technique",
+    title: "Maintenance technique intégrée",
+    category: "Infrastructure & Technique",
+    icon: "Wrench",
+    description:
+      "Préventive, corrective, multi-technique : vos équipements maintenus au plus haut niveau de performance.",
+    tagline: "Zéro panne non anticipée. Zéro surprise.",
+    intro:
+      "Chaque jour d'arrêt non planifié coûte de l'argent et nuit à votre réputation. DX Facilities met en œuvre un programme de maintenance structuré, couvrant l'ensemble de vos lots techniques pour garantir la disponibilité permanente de vos installations.",
+    details:
+      "Notre approche couvre l'électricité, la climatisation, la plomberie et la structure du bâtiment. Chaque intervention est consignée dans notre logiciel CMMS, accessible à tout moment via un tableau de bord client. Nous intervenons en mode préventif pour anticiper les défaillances, et en mode correctif avec des délais de réponse garantis contractuellement. Résultat : un taux de disponibilité supérieur à 99% et des équipes métier qui travaillent sans interruption.",
+    features: [
+      "Maintenance préventive planifiée selon les préconisations constructeurs",
+      "Maintenance corrective avec délai d'intervention garanti",
+      "Entretien multi-technique : électricité, CVC, plomberie, structure",
+      "Gestion des équipements techniques de second œuvre",
+      "Traçabilité complète via logiciel CMMS avec accès client",
+      "Reporting mensuel d'activité et indicateurs de performance",
+    ],
+    process: [
+      {
+        step: "Audit technique initial",
+        description:
+          "État des lieux exhaustif de tous vos équipements : inventaire, âge, état, criticité. Base de travail de toutes nos interventions.",
+      },
+      {
+        step: "Plan de maintenance personnalisé",
+        description:
+          "Programme préventif calé sur les préconisations fabricants et votre contexte d'exploitation. Planification sur 12 mois validée avec vous.",
+      },
+      {
+        step: "Interventions et traçabilité",
+        description:
+          "Chaque visite est documentée en temps réel dans notre CMMS : technicien, durée, pièces, observations. Zéro oubli, zéro approximation.",
+      },
+      {
+        step: "Reporting et amélioration continue",
+        description:
+          "Tableau de bord mensuel avec indicateurs clés. Revue trimestrielle pour ajuster le plan et anticiper les renouvellements.",
+      },
+    ],
+    kpis: [
+      { value: "99,2 %", label: "taux de disponibilité cible" },
+      { value: "< 4 h", label: "délai de réponse garanti" },
+      { value: "100 %", label: "interventions documentées" },
+    ],
+  },
+  {
+    slug: "gestion-actifs",
+    title: "Gestion du patrimoine technique",
+    category: "Infrastructure & Technique",
+    icon: "BarChart3",
+    description:
+      "Inventaire complet, cycle de vie, planification CAPEX : décidez avec des données fiables.",
+    tagline: "Contrôlez vos actifs. Maîtrisez votre budget.",
+    intro:
+      "La prise de décision budgétaire exige une connaissance précise de vos actifs. DX Facilities construit et maintient un inventaire exhaustif de votre patrimoine technique, anticipe les renouvellements et vous fournit les analyses nécessaires pour optimiser chaque investissement.",
+    details:
+      "Trop d'organisations gèrent leur patrimoine technique à l'aveugle, réagissant aux pannes au lieu d'anticiper les remplacements. Notre service de gestion d'actifs vous apporte une vision à 360° de l'état de vos équipements, de leur valeur résiduelle et de leur durée de vie estimée. Vous planifiez vos investissements avec une visibilité pluriannuelle et évitez les dépenses CAPEX imprévues qui déséquilibrent les budgets.",
+    features: [
+      "Inventaire exhaustif et codification de tous les équipements techniques",
+      "Suivi du cycle de vie avec alertes de vieillissement",
+      "Planification CAPEX pluriannuelle avec scénarios budgétaires",
+      "Rapports d'état et tableaux de bord décisionnels",
+      "Recommandations de remplacement et d'optimisation",
+      "Valorisation comptable et amortissement technique du patrimoine",
+    ],
+    process: [
+      {
+        step: "Inventaire et codification",
+        description:
+          "Répertoire exhaustif de tous vos équipements avec numérotation, localisation, référence fabricant et date de mise en service.",
+      },
+      {
+        step: "Évaluation et criticité",
+        description:
+          "Analyse de l'état de chaque actif, calcul de la durée de vie résiduelle et classification par niveau de criticité pour votre activité.",
+      },
+      {
+        step: "Plan CAPEX pluriannuel",
+        description:
+          "Projection sur 5 ans des besoins de renouvellement avec chiffrage et priorisation. Intégré dans votre cycle budgétaire annuel.",
+      },
+      {
+        step: "Reporting continu",
+        description:
+          "Tableau de bord patrimonial mis à jour en temps réel. Alertes automatiques dès qu'un équipement approche de son seuil de renouvellement.",
+      },
+    ],
+    kpis: [
+      { value: "100 %", label: "du patrimoine inventorié" },
+      { value: "- 15 %", label: "de dépenses CAPEX imprévues" },
+      { value: "5 ans", label: "de visibilité budgétaire" },
+    ],
+  },
+  {
+    slug: "smart-buildings",
+    title: "Bâtiments connectés & IoT",
+    category: "Intelligence & Technologie",
+    icon: "Cpu",
+    description:
+      "GTB, capteurs IoT, automatisation intelligente : vos installations pilotées en temps réel.",
+    tagline: "Transformez vos données en décisions.",
+    intro:
+      "Vos bâtiments génèrent des milliers de données chaque heure. DX Facilities connecte, intègre et exploite ces données pour vous offrir une vision en temps réel de l'état de vos installations et automatiser les scénarios d'exploitation.",
+    details:
+      "Un bâtiment connecté, c'est moins de gaspillage, plus de réactivité et une expérience occupant améliorée. Nous déployons des capteurs IoT sur vos équipements critiques (éclairage, CVC, accès, fluides), les intégrons dans une plateforme unifiée et vous donnons accès à des tableaux de bord accessibles depuis n'importe quel terminal. Les alertes sont configurables selon vos seuils et vos priorités.",
+    features: [
+      "Intégration de systèmes de gestion technique du bâtiment (GTB/GTC)",
+      "Déploiement de capteurs IoT sur équipements critiques",
+      "Tableaux de bord temps réel accessibles depuis tout terminal",
+      "Automatisation des scénarios d'exploitation (occupation, horaires, météo)",
+      "Alertes configurables et escalades automatiques",
+      "Interopérabilité avec vos systèmes existants",
+    ],
+    process: [
+      {
+        step: "Audit de connectivité",
+        description:
+          "Évaluation de vos infrastructures réseau, de vos systèmes existants et définition de l'architecture cible.",
+      },
+      {
+        step: "Déploiement des capteurs",
+        description:
+          "Installation de capteurs calibrés pour chaque usage : température, présence, consommation, accès, qualité d'air.",
+      },
+      {
+        step: "Intégration et paramétrage",
+        description:
+          "Connexion de tous les équipements à la plateforme GTB. Configuration des scénarios automatiques et des règles d'alerte.",
+      },
+      {
+        step: "Formation et prise en main",
+        description:
+          "Accompagnement de vos équipes sur les tableaux de bord. Assistance continue pour faire évoluer les paramètres.",
+      },
+    ],
+    kpis: [
+      { value: "24/7", label: "monitoring en continu" },
+      { value: "< 1 s", label: "latence des alertes" },
+      { value: "100 %", label: "interopérabilité garantie" },
+    ],
+  },
+  {
+    slug: "maintenance-predictive",
+    title: "Maintenance prédictive",
+    category: "Intelligence & Technologie",
+    icon: "Activity",
+    description:
+      "Analyse de données capteurs en continu pour anticiper les défaillances avant qu'elles surviennent.",
+    tagline: "Intervenez avant la panne. Pas après.",
+    intro:
+      "Attendre la panne pour intervenir est une stratégie coûteuse. Grâce à l'analyse continue des signaux émis par vos équipements, DX Facilities détecte les signes précurseurs de défaillance et planifie les interventions au moment le plus opportun.",
+    details:
+      "La maintenance prédictive repose sur la surveillance en temps réel de paramètres physiques clés : vibrations, température, consommation électrique, pression des fluides. Nos algorithmes analysent en permanence ces données pour identifier les dérives qui annoncent une défaillance. L'intervention est programmée avant que la panne survienne, évitant ainsi les arrêts non planifiés et les coûts d'urgence.",
+    features: [
+      "Capteurs de vibration, température, courant et acoustique",
+      "Algorithmes d'analyse prédictive et de détection d'anomalies",
+      "Alertes automatiques dès détection de dérive significative",
+      "Planification des interventions avant défaillance",
+      "Réduction des temps d'arrêt non planifiés",
+      "Rapport d'analyse et amélioration continue du modèle prédictif",
+    ],
+    process: [
+      {
+        step: "Installation des capteurs",
+        description:
+          "Déploiement de capteurs multi-paramètres sur vos équipements critiques : moteurs, compresseurs, groupes électrogènes, CVC.",
+      },
+      {
+        step: "Collecte et modélisation",
+        description:
+          "Établissement d'une baseline de comportement normal pour chaque équipement. Les algorithmes apprennent vos cycles d'exploitation.",
+      },
+      {
+        step: "Détection et alerte",
+        description:
+          "Surveillance permanente des écarts. Génération automatique d'alertes classées par urgence avec recommandation d'intervention.",
+      },
+      {
+        step: "Intervention et retour d'expérience",
+        description:
+          "Planification de l'intervention au bon moment. Analyse post-intervention pour affiner le modèle prédictif.",
+      },
+    ],
+    kpis: [
+      { value: "- 40 %", label: "de pannes non planifiées" },
+      { value: "+ 30 %", label: "de durée de vie équipements" },
+      { value: "0", label: "arrêt de production non anticipé" },
+    ],
+  },
+  {
+    slug: "efficacite-energetique",
+    title: "Performance énergétique",
+    category: "Énergie & Environnement",
+    icon: "Zap",
+    description:
+      "Audit, monitoring et plans d'action : réduisez votre facture et progressez vers vos objectifs ESG.",
+    tagline: "Réduisez vos consommations. Valorisez votre engagement.",
+    intro:
+      "L'énergie représente en moyenne 30% des charges d'exploitation d'un bâtiment tertiaire. DX Facilities audite vos consommations, identifie les gisements d'économies et met en œuvre des actions concrètes, alignées sur vos engagements environnementaux.",
+    details:
+      "Notre démarche ne s'arrête pas au diagnostic. Après l'audit, nous construisons un plan d'action priorisé par ROI, que nous déployons et suivons dans la durée. Chaque économie réalisée est mesurée et documentée. Nos reporting ESG vous permettent de communiquer en toute transparence sur vos progrès environnementaux auprès de vos parties prenantes.",
+    features: [
+      "Audit énergétique complet (électricité, eau, gaz, fluides frigorigènes)",
+      "Monitoring de la consommation en temps réel par usage et par zone",
+      "Plans d'optimisation priorisés par retour sur investissement",
+      "Accompagnement à la certification environnementale (EDGE, BREEAM, HQE)",
+      "Reporting ESG mensuel conforme aux exigences réglementaires",
+      "Recommandations d'équipements à haute efficacité énergétique",
+    ],
+    process: [
+      {
+        step: "Audit énergétique",
+        description:
+          "Mesure et analyse de toutes vos consommations sur 12 mois. Identification des postes les plus énergivores et des anomalies.",
+      },
+      {
+        step: "Plan d'optimisation",
+        description:
+          "Sélection des actions à fort impact ROI : réglages, automatisation, remplacement d'équipements, sensibilisation des occupants.",
+      },
+      {
+        step: "Mise en œuvre",
+        description:
+          "Déploiement des actions par ordre de priorité. Coordination avec vos équipes et vos prestataires existants.",
+      },
+      {
+        step: "Suivi et reporting",
+        description:
+          "Mesure mensuelle des économies réalisées. Tableau de bord ESG et rapport de performance energétique pour vos parties prenantes.",
+      },
+    ],
+    kpis: [
+      { value: "- 18 %", label: "de consommation en moyenne" },
+      { value: "12 mois", label: "retour sur investissement" },
+      { value: "ISO 50001", label: "compatible" },
+    ],
+  },
+  {
+    slug: "securite",
+    title: "Sécurité des personnes et des biens",
+    category: "Sécurité & Conformité",
+    icon: "Shield",
+    description:
+      "Gardiennage, contrôle d'accès, vidéoprotection : un dispositif sur mesure, opéré 24h/24.",
+    tagline: "Votre sécurité ne laisse aucune place à l'improvisation.",
+    intro:
+      "La sécurité de vos équipes, de vos visiteurs et de vos actifs est une responsabilité qui ne tolère aucune approximation. DX Facilities conçoit et opère des dispositifs de sécurité adaptés à votre profil de risque.",
+    details:
+      "Notre offre couvre l'ensemble du spectre de la sécurité physique : surveillance humaine assurée par des agents formés et certifiés, systèmes de contrôle d'accès et de vidéoprotection, sécurité incendie et gestion des évacuations. Chaque dispositif est conçu sur mesure après une analyse de risques rigoureuse. Nos équipes sont disponibles 24h/24, 7j/7 et interviennent dans des délais garantis.",
+    features: [
+      "Gardiennage et surveillance humaine par agents certifiés",
+      "Systèmes de contrôle d'accès (badges, biométrie, interphonie)",
+      "Vidéoprotection (CCTV) et télésurveillance",
+      "Sécurité incendie : détection, extinction, évacuation",
+      "Plans d'intervention d'urgence et exercices d'évacuation",
+      "Rapports d'incidents et tableaux de bord sécurité",
+    ],
+    process: [
+      {
+        step: "Analyse des risques",
+        description:
+          "Évaluation complète de votre contexte : nature des activités, flux de personnes, valeur des actifs, contraintes réglementaires.",
+      },
+      {
+        step: "Conception du dispositif",
+        description:
+          "Plan de sécurité sur mesure combinant surveillance humaine, systèmes électroniques et procédures d'urgence.",
+      },
+      {
+        step: "Déploiement et formation",
+        description:
+          "Mise en place des équipements et des équipes. Formation de vos collaborateurs aux procédures d'urgence et d'évacuation.",
+      },
+      {
+        step: "Supervision continue",
+        description:
+          "Pilotage opérationnel 24/7. Gestion des incidents en temps réel et reporting régulier sur l'état de la sécurité.",
+      },
+    ],
+    kpis: [
+      { value: "24/7", label: "surveillance active" },
+      { value: "100 %", label: "conformité réglementaire" },
+      { value: "< 3 min", label: "délai d'intervention garanti" },
+    ],
+  },
+  {
+    slug: "nettoyage-professionnel",
+    title: "Propreté & hygiène professionnelle",
+    category: "Propreté & Services",
+    icon: "Sparkles",
+    description:
+      "Protocoles rigoureux, produits certifiés, contrôles qualité : des espaces irréprochables au quotidien.",
+    tagline: "Des espaces impeccables, reflet de votre image.",
+    intro:
+      "Un espace propre améliore le bien-être, réduit l'absentéisme et envoie un signal fort à vos clients et partenaires. DX Facilities prend en charge la propreté de vos locaux avec rigueur et méthode.",
+    details:
+      "Notre offre ne se limite pas au nettoyage quotidien. Elle intègre des prestations spécialisées (vitrage en hauteur, sols techniques, espaces sensibles), la gestion des consommables sanitaires et un programme de désinfection adapté à votre secteur. Chaque site bénéficie d'un plan de nettoyage détaillé, d'agents dédiés et d'un contrôle qualité hebdomadaire assuré par notre encadrement.",
+    features: [
+      "Nettoyage quotidien des bureaux, espaces communs et sanitaires",
+      "Prestations spécialisées : vitrage, sols techniques, espaces sensibles",
+      "Désinfection et protocoles d'hygiène renforcés",
+      "Gestion complète des consommables sanitaires",
+      "Contrôle qualité hebdomadaire avec grille d'évaluation",
+      "Interventions d'urgence et remise en état ponctuelle",
+    ],
+    process: [
+      {
+        step: "Diagnostic des espaces",
+        description:
+          "Cartographie de vos locaux, identification des contraintes (horaires, zones sensibles, matériaux) et définition du plan de nettoyage.",
+      },
+      {
+        step: "Mise en place des équipes",
+        description:
+          "Sélection, formation et équipement des agents. Attribution par zone pour garantir la continuité et la qualité du service.",
+      },
+      {
+        step: "Prestations et protocoles",
+        description:
+          "Exécution selon le plan validé. Produits certifiés, matériels adaptés à chaque surface, respect des normes d'hygiène sectorielles.",
+      },
+      {
+        step: "Contrôle qualité",
+        description:
+          "Audit hebdomadaire par grille standardisée. Retours clients intégrés, actions correctives immédiates, reporting mensuel.",
+      },
+    ],
+    kpis: [
+      { value: "100 %", label: "satisfaction client cible" },
+      { value: "7j/7", label: "disponibilité des équipes" },
+      { value: "0", label: "non-conformité en audit" },
+    ],
+  },
+  {
+    slug: "accueil-courrier",
+    title: "Accueil & services généraux",
+    category: "Propreté & Services",
+    icon: "Users",
+    description:
+      "Accueil professionnel, gestion du courrier et des flux : une image soignée, une organisation sans faille.",
+    tagline: "La première impression compte. Autant que la dernière.",
+    intro:
+      "L'accueil est le premier contact de vos visiteurs avec votre entreprise. Il reflète vos valeurs et votre niveau d'exigence. DX Facilities met à votre disposition des équipes formées aux standards des grandes organisations.",
+    details:
+      "Nos hôtes et hôtesses d'accueil sont sélectionnés pour leur présentation, leur sens du service et leur maîtrise des outils de gestion de flux. Ils gèrent le registre des visiteurs, les badges d'accès, la salle d'attente et les demandes de renseignements. En parallèle, nos équipes assurent la réception, le tri et la distribution de votre courrier et de vos colis, avec traçabilité complète.",
+    features: [
+      "Accueil physique des visiteurs avec procédures personnalisées",
+      "Gestion des badges, registres et listes d'accès autorisés",
+      "Réception, tri et distribution du courrier et des colis",
+      "Standard téléphonique et orientation des appels",
+      "Coordination avec les services de sécurité et techniques",
+      "Reporting des flux et indicateurs d'activité",
+    ],
+    process: [
+      {
+        step: "Profil & formation",
+        description:
+          "Sélection des agents selon votre secteur et votre image de marque. Formation aux procédures spécifiques de votre organisation.",
+      },
+      {
+        step: "Accueil des visiteurs",
+        description:
+          "Gestion des flux entrants, enregistrement, badges, orientation et accompagnement. Interface avec vos équipes internes.",
+      },
+      {
+        step: "Gestion du courrier",
+        description:
+          "Réception des envois, tri par destinataire, distribution aux services, gestion des colis volumineux et des envois urgents.",
+      },
+      {
+        step: "Coordination et reporting",
+        description:
+          "Lien entre l'accueil et vos services généraux. Tableau de bord mensuel des flux et des incidents.",
+      },
+    ],
+    kpis: [
+      { value: "100 %", label: "visiteurs enregistrés" },
+      { value: "< 2 min", label: "temps d'accueil moyen" },
+      { value: "0", label: "courrier non tracé" },
+    ],
+  },
+];
+
+export const serviceBySlug = (slug: string): Service | undefined =>
+  services.find((s) => s.slug === slug);

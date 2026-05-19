@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  ArrowRight,
   Wrench,
   BarChart3,
   Cpu,
@@ -33,23 +34,26 @@ export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group flex flex-col gap-3.5 rounded-lg border border-t-2 border-t-transparent border-dx-steel-100 bg-white p-6 transition-all duration-180 ease-standard hover:border-dx-steel-300 hover:border-t-dx-blue-500 hover:shadow-md min-h-[240px]"
+      className="group relative flex flex-col gap-5 rounded-xl bg-dx-blue-500 p-7 transition-all duration-200 hover:bg-dx-blue-600 hover:shadow-2xl hover:-translate-y-1.5 overflow-hidden min-h-[240px]"
     >
-      <div className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-lg bg-dx-navy-500 text-white">
-        <Icon size={24} strokeWidth={1.75} />
+      {/* Decorative circle */}
+      <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/5" />
+
+      <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white">
+        <Icon size={28} strokeWidth={1.5} />
       </div>
 
-      <div className="flex flex-col gap-2 flex-1">
-        <h3 className="font-sans text-lg font-semibold text-dx-navy-500 leading-snug">
+      <div className="relative flex flex-col gap-2.5 flex-1">
+        <h3 className="font-display font-bold text-lg text-white leading-snug uppercase tracking-wide">
           {service.title}
         </h3>
-        <p className="dx-caption text-dx-steel-500 leading-relaxed">
+        <p className="text-sm text-white/75 leading-relaxed">
           {service.description}
         </p>
       </div>
 
-      <span className="dx-caption text-dx-blue-500 font-semibold group-hover:underline">
-        En savoir plus
+      <span className="relative flex items-center gap-1.5 text-sm font-semibold text-white/80 group-hover:text-white group-hover:gap-3 transition-all duration-150">
+        En savoir plus <ArrowRight size={13} strokeWidth={2} />
       </span>
     </Link>
   );

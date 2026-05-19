@@ -6,15 +6,15 @@ import { Container } from "@/components/layout/Container";
 
 export function ServicesGrid() {
   return (
-    <section className="dx-section bg-dx-paper">
+    <section className="dx-section bg-dx-navy-500">
       <Container>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4 max-w-xl">
             <Eyebrow>Nos services</Eyebrow>
-            <h2 className="dx-h2 text-dx-navy-500">
+            <h2 className="dx-h2 text-white">
               Une offre complète de facility management
             </h2>
-            <p className="dx-lead text-dx-steel-600">
+            <p className="dx-lead text-white/60">
               Huit domaines d'expertise intégrés pour gérer l'intégralité de
               vos installations, de la maintenance technique à la propreté des
               espaces.
@@ -28,7 +28,7 @@ export function ServicesGrid() {
           </div>
 
           <div className="flex justify-center">
-            <Link href="/services" className="btn btn--secondary btn--lg">
+            <Link href="/services" className="btn btn--inverse btn--lg">
               Voir tous nos services
             </Link>
           </div>

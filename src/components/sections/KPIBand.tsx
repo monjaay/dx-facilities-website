@@ -14,13 +14,16 @@ export function KPIBand() {
 
       <Container className="relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-          {kpis.map((kpi) => (
-            <div key={kpi.label} className="flex flex-col gap-1 text-center lg:text-left">
-              <div className="font-display font-bold text-5xl text-white leading-tight tabular-nums">
+          {kpis.map((kpi, index) => (
+            <div
+              key={kpi.label}
+              className={`flex flex-col gap-1 text-center lg:text-left${index < kpis.length - 1 ? " lg:border-r lg:border-white/10 lg:pr-10" : ""}`}
+            >
+              <div className="font-display font-bold text-6xl lg:text-7xl text-white leading-none tabular-nums">
                 {kpi.value}
-                <span className="text-2xl text-dx-blue-300 ml-1">{kpi.unit}</span>
+                <span className="text-3xl text-dx-blue-300 ml-1">{kpi.unit}</span>
               </div>
-              <p className="text-xs text-white/60">{kpi.label}</p>
+              <p className="text-sm text-white/50 mt-2 uppercase tracking-wider">{kpi.label}</p>
             </div>
           ))}
         </div>

@@ -1,9 +1,31 @@
+import { readFileSync } from "fs";
+import path from "path";
 import { team } from "@/data/team";
 import { ImageSlot } from "@/components/shared/ImageSlot";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
 
+// Read team-photos.json fresh on each request (dev) / at build time (prod)
+function getTeamPhotos(): Record<string, string> {
+  try {
+    const filePath = path.join(process.cwd(), "src", "data", "team-photos.json");
+    return JSON.parse(readFileSync(filePath, "utf-8")) as Record<string, string>;
+  } catch {
+    return {};
+  }
+}
+
+function nameToSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+}
+
 export function TeamGrid() {
+  const photos = getTeamPhotos();
   return (
     <section className="dx-section bg-[#090d1a]">
       <Container>
@@ -21,10 +43,13 @@ export function TeamGrid() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {team.map((member) => (
+            {team.map((member) => {
+              const slug = nameToSlug(member.name);
+              const photo = photos[slug];
+              return (
               <div key={member.name} className="flex flex-col gap-4">
                 <ImageSlot
-                  // src={`/images/team/${member.name.toLowerCase().replace(/\s+/g, '-')}.jpg`}
+                  src={photo}
                   alt={`${member.name}, ${member.role}`}
                   label="Photo · 1:1"
                   aspectRatio="aspect-square"
@@ -45,7 +70,8 @@ export function TeamGrid() {
                   </p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </Container>

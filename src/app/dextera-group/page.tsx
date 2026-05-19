@@ -48,21 +48,21 @@ export default function DexteraGroupPage() {
         </Container>
       </section>
 
-      <section className="dx-section bg-white">
+      <section className="dx-section bg-[#090d1a]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div className="flex flex-col gap-6">
               <Eyebrow>Notre histoire</Eyebrow>
-              <h2 className="dx-h2 text-dx-navy-500">
+              <h2 className="dx-h2 text-white">
                 Un groupe fondé sur une vision à long terme
               </h2>
-              <p className="dx-body text-dx-steel-600">
+              <p className="dx-body text-white/70">
                 DEXTERA GROUP a été fondé en 2024 par El Hadji Malick Gueye,
                 ingénieur en génie civil et expert en management QHSE avec plus
                 de 15 ans d'expérience sur les plus grands projets
                 d'infrastructure du Sénégal.
               </p>
-              <p className="dx-body text-dx-steel-600">
+              <p className="dx-body text-white/70">
                 La vision : créer un groupe multisectoriel dont les filiales se
                 renforcent mutuellement pour offrir à leurs clients une
                 couverture complète, de la conception à l'exploitation de leurs
@@ -78,12 +78,12 @@ export default function DexteraGroupPage() {
                       <span className="font-mono text-[10px] font-bold">{i + 1}</span>
                     </div>
                     {i < timeline.length - 1 && (
-                      <div className="w-px flex-1 bg-dx-steel-200 mt-1" />
+                      <div className="w-px flex-1 bg-white/15 mt-1" />
                     )}
                   </div>
                   <div className="flex flex-col gap-1 pt-0.5 pb-2">
                     <span className="dx-eyebrow">{item.year}</span>
-                    <p className="dx-body text-dx-steel-600">{item.event}</p>
+                    <p className="dx-body text-white/70">{item.event}</p>
                   </div>
                 </div>
               ))}
@@ -92,7 +92,7 @@ export default function DexteraGroupPage() {
         </Container>
       </section>
 
-      <section className="dx-section bg-dx-paper border-t border-dx-steel-100">
+      <section className="dx-section bg-dx-navy-500 border-t border-white/10">
         <Container>
           <ImageSlot
             src="/images/dextera-group.jpg"

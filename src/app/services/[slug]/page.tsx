@@ -83,7 +83,7 @@ export default async function ServiceDetailPage({ params }: Params) {
       </section>
 
       {/* Main content */}
-      <section className="dx-section bg-dx-paper">
+      <section className="dx-section bg-[#090d1a]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16">
             {/* Left column */}
@@ -99,15 +99,15 @@ export default async function ServiceDetailPage({ params }: Params) {
 
               {/* Details paragraph */}
               <div className="flex flex-col gap-4">
-                <h2 className="dx-h3 text-dx-navy-500">Notre engagement</h2>
-                <p className="dx-body text-dx-steel-600 leading-relaxed">
+                <h2 className="dx-h3 text-white">Notre engagement</h2>
+                <p className="dx-body text-white/70 leading-relaxed">
                   {service.details}
                 </p>
               </div>
 
               {/* Features */}
               <div className="flex flex-col gap-6">
-                <h2 className="dx-h3 text-dx-navy-500">
+                <h2 className="dx-h3 text-white">
                   Ce que nous faisons pour vous
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
@@ -116,9 +116,9 @@ export default async function ServiceDetailPage({ params }: Params) {
                       <CheckCircle2
                         size={18}
                         strokeWidth={1.75}
-                        className="shrink-0 mt-0.5 text-dx-blue-500"
+                        className="shrink-0 mt-0.5 text-dx-blue-400"
                       />
-                      <span className="dx-body text-dx-navy-700">{feature}</span>
+                      <span className="dx-body text-white/80">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -126,7 +126,7 @@ export default async function ServiceDetailPage({ params }: Params) {
 
               {/* Process */}
               <div className="flex flex-col gap-6">
-                <h2 className="dx-h3 text-dx-navy-500">Notre approche</h2>
+                <h2 className="dx-h3 text-white">Notre approche</h2>
                 <div className="flex flex-col gap-0">
                   {service.process.map((item, i) => (
                     <div key={i} className="flex gap-5 pb-8 last:pb-0">
@@ -137,14 +137,14 @@ export default async function ServiceDetailPage({ params }: Params) {
                           </span>
                         </div>
                         {i < service.process.length - 1 && (
-                          <div className="w-px flex-1 bg-dx-steel-200 mt-1" />
+                          <div className="w-px flex-1 bg-white/10 mt-1" />
                         )}
                       </div>
                       <div className="flex flex-col gap-1.5 pt-0.5 pb-2">
-                        <h3 className="font-sans text-base font-semibold text-dx-navy-500">
+                        <h3 className="font-sans text-base font-semibold text-white">
                           {item.step}
                         </h3>
-                        <p className="dx-body text-dx-steel-600">
+                        <p className="dx-body text-white/60">
                           {item.description}
                         </p>
                       </div>
@@ -195,12 +195,12 @@ export default async function ServiceDetailPage({ params }: Params) {
       </section>
 
       {/* Other services */}
-      <section className="dx-section bg-white border-t border-dx-steel-100">
+      <section className="dx-section bg-dx-navy-500 border-t border-white/10">
         <Container>
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-3 max-w-xl">
               <Eyebrow>Nos autres services</Eyebrow>
-              <h2 className="dx-h2 text-dx-navy-500">
+              <h2 className="dx-h2 text-white">
                 Une offre intégrée pour vos installations
               </h2>
             </div>
@@ -212,20 +212,20 @@ export default async function ServiceDetailPage({ params }: Params) {
                   <Link
                     key={s.slug}
                     href={`/services/${s.slug}`}
-                    className="group flex flex-col gap-3 rounded-lg border border-dx-steel-100 bg-dx-paper p-5 transition-all duration-180 hover:border-dx-steel-300 hover:shadow-md hover:border-t-2 hover:border-t-dx-blue-500"
+                    className="group flex flex-col gap-3 rounded-lg border border-white/10 bg-white/[0.05] p-5 transition-all duration-180 hover:bg-white/[0.09] hover:border-white/20"
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-dx-navy-500 text-white">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-dx-blue-500 text-white">
                       <OtherIcon size={18} strokeWidth={1.75} />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <h3 className="font-sans text-sm font-semibold text-dx-navy-500 leading-snug">
+                      <h3 className="font-sans text-sm font-semibold text-white leading-snug">
                         {s.title}
                       </h3>
-                      <p className="dx-caption text-dx-steel-500 leading-relaxed line-clamp-2">
+                      <p className="dx-caption text-white/60 leading-relaxed line-clamp-2">
                         {s.description}
                       </p>
                     </div>
-                    <span className="mt-auto flex items-center gap-1 dx-caption font-semibold text-dx-blue-500 group-hover:gap-2 transition-all duration-120">
+                    <span className="mt-auto flex items-center gap-1 dx-caption font-semibold text-dx-blue-300 group-hover:gap-2 transition-all duration-120">
                       Découvrir
                       <ArrowRight size={13} strokeWidth={2} />
                     </span>

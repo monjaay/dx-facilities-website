@@ -4,7 +4,6 @@ import { ServiceCard } from "@/components/ui/ServiceCard";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
 import { CTABand } from "@/components/sections/CTABand";
-import { ImageSlot } from "@/components/shared/ImageSlot";
 
 export const metadata: Metadata = {
   title: "Nos services — Facility Management Intégré",
@@ -20,6 +19,12 @@ const categories = [
   "Propreté & Services",
 ] as const;
 
+const clientResults = [
+  { value: "- 22 %", label: "de coûts opérationnels en moyenne dès la 1re année" },
+  { value: "- 40 %", label: "de temps d'arrêt non planifiés grâce à la maintenance prédictive" },
+  { value: "+ 15 %", label: "de satisfaction des occupants mesurée sur 12 mois" },
+];
+
 export default function ServicesPage() {
   return (
     <>
@@ -28,24 +33,25 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-4 max-w-2xl">
             <Eyebrow>Nos services</Eyebrow>
             <h1 className="dx-h1 text-white">
-              Une offre complète pour chaque enjeu de vos installations
+              8 services. Une seule mission : zéro contrainte opérationnelle.
             </h1>
             <p className="dx-lead text-white/70 max-w-xl">
-              Cinq domaines d'expertise, huit services opérationnels : DX Facilities
-              couvre l'intégralité du cycle de vie de vos bâtiments, de la
-              maintenance préventive à la gestion intelligente des actifs.
+              Cinq domaines d'expertise, huit services opérationnels : DX
+              Facilities couvre l'intégralité du cycle de vie de vos bâtiments,
+              de la maintenance préventive à la gestion intelligente des actifs.
             </p>
           </div>
         </Container>
       </section>
 
-      {categories.map((category) => {
+      {categories.map((category, idx) => {
         const categoryServices = services.filter(
           (s) => s.category === category
         );
         if (categoryServices.length === 0) return null;
+        const bg = idx % 2 === 0 ? "bg-[#090d1a]" : "bg-dx-navy-500";
         return (
-          <section key={category} className="dx-section bg-dx-paper border-t border-dx-steel-100 first:border-0">
+          <section key={category} className={`dx-section ${bg} border-t border-white/10`}>
             <Container>
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-2">
@@ -62,14 +68,30 @@ export default function ServicesPage() {
         );
       })}
 
-      <section className="dx-section bg-white border-t border-dx-steel-100">
+      {/* Client results section — replaces ImageSlot */}
+      <section className="dx-section bg-dx-blue-500">
         <Container>
-          <ImageSlot
-            src="/images/services-overview.jpg"
-            alt="Ingénieur DX Facilities avec tablette de supervision"
-            aspectRatio="aspect-[16/6]"
-            className="w-full"
-          />
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-3 max-w-xl">
+              <Eyebrow>Résultats clients</Eyebrow>
+              <h2 className="dx-h2 text-white">
+                Des gains mesurables, dès les premiers mois
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {clientResults.map((result) => (
+                <div
+                  key={result.label}
+                  className="flex flex-col gap-2 rounded-lg bg-white/10 p-6 border border-white/15"
+                >
+                  <span className="font-display font-bold text-5xl text-white leading-tight">
+                    {result.value}
+                  </span>
+                  <span className="dx-body text-white/75">{result.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </Container>
       </section>
 

@@ -17,8 +17,13 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-dx-navy-500 text-white/70">
+    <footer className="bg-[#050810] text-white/70">
       <div className="dx-container py-16">
+        {/* Tagline micro-section */}
+        <p className="text-sm italic text-white/35 mb-10 border-b border-white/[0.06] pb-10">
+          Moins de contraintes. Plus de performance. Un seul partenaire pour l'ensemble de vos installations.
+        </p>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div className="flex flex-col gap-5">
             {/* True intrinsic: 870 × 739. Display at 52 px height → ~61 px wide */}

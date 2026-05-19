@@ -45,13 +45,13 @@ export function ContactForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-dx-blue-50 text-dx-blue-500">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-dx-blue-500 text-white">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h3 className="dx-h3 text-dx-navy-500">Message envoyé</h3>
-        <p className="dx-body text-dx-steel-600 max-w-sm">
+        <h3 className="dx-h3 text-white">Message envoyé</h3>
+        <p className="dx-body text-white/70 max-w-sm">
           Nous avons bien reçu votre demande. Notre équipe vous recontactera
           dans les 24 heures ouvrées.
         </p>
@@ -66,9 +66,9 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded border border-dx-steel-200 bg-white px-3 py-2.5 text-sm text-dx-navy-700 placeholder:text-dx-steel-400 shadow-xs transition-all duration-120 focus:border-dx-blue-500 focus:outline-none focus:shadow-focus";
+    "w-full rounded border border-white/15 bg-white/[0.08] px-3 py-2.5 text-sm text-white placeholder:text-white/30 transition-all duration-120 focus:border-dx-blue-400 focus:outline-none focus:ring-0";
 
-  const labelClass = "block dx-caption font-semibold text-dx-navy-700 mb-1.5";
+  const labelClass = "block dx-caption font-semibold text-white/80 mb-1.5";
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">

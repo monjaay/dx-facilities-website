@@ -26,25 +26,25 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="dx-section bg-dx-paper">
+      <section className="dx-section bg-[#090d1a]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
             <ContactForm />
 
             <aside className="flex flex-col gap-6">
-              <div className="rounded-xl bg-dx-navy-500 p-8 flex flex-col gap-6">
-                <h2 className="dx-caption font-semibold uppercase tracking-eyebrow text-white/60">
+              <div className="rounded-xl bg-dx-blue-500 p-8 flex flex-col gap-6">
+                <h2 className="dx-caption font-bold uppercase tracking-eyebrow text-white">
                   Nos coordonnées
                 </h2>
 
                 <div className="flex flex-col gap-5">
                   <div className="flex items-start gap-3">
-                    <Phone size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
+                    <Phone size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-white" />
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Téléphone fixe</span>
                       <a
                         href="tel:+22133843164"
-                        className="dx-caption text-white/60 hover:text-white transition-colors duration-120"
+                        className="dx-caption text-white/75 hover:text-white transition-colors duration-120"
                       >
                         +221 33 843 14 64
                       </a>
@@ -52,12 +52,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Phone size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
+                    <Phone size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-white" />
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Mobile</span>
                       <a
                         href="tel:+221775470346"
-                        className="dx-caption text-white/60 hover:text-white transition-colors duration-120"
+                        className="dx-caption text-white/75 hover:text-white transition-colors duration-120"
                       >
                         +221 77 547 03 46
                       </a>
@@ -65,12 +65,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Mail size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
+                    <Mail size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-white" />
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Email</span>
                       <a
                         href="mailto:info@dxfacilities.com"
-                        className="dx-caption text-white/60 hover:text-white transition-colors duration-120"
+                        className="dx-caption text-white/75 hover:text-white transition-colors duration-120"
                       >
                         info@dxfacilities.com
                       </a>
@@ -78,10 +78,10 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <MapPin size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
+                    <MapPin size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-white" />
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Adresse</span>
-                      <p className="dx-caption text-white/60 leading-relaxed">
+                      <p className="dx-caption text-white/75 leading-relaxed">
                         Rte de l'aéroport, lot N°88106
                         <br />
                         Yoff ONOMO, Dakar
@@ -92,10 +92,10 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Clock size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
+                    <Clock size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-white" />
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Horaires</span>
-                      <p className="dx-caption text-white/60">
+                      <p className="dx-caption text-white/75">
                         Lun. au Ven. : 8h – 18h
                         <br />
                         Astreinte 24/7 pour urgences

@@ -56,22 +56,22 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="dx-section bg-white">
+      <section className="dx-section bg-[#090d1a]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div className="flex flex-col gap-6">
               <Eyebrow>Notre mission</Eyebrow>
-              <h2 className="dx-h2 text-dx-navy-500">
-                Libérer vos équipes des contraintes opérationnelles
+              <h2 className="dx-h2 text-white">
+                Libérer votre potentiel opérationnel
               </h2>
-              <p className="dx-body text-dx-steel-600">
+              <p className="dx-body text-white/70">
                 Chaque heure que vos équipes consacrent à gérer la maintenance,
                 la sécurité ou la propreté est une heure de moins sur votre
                 cœur de métier. DX Facilities prend en charge l'intégralité de
                 vos installations pour que vous vous concentriez sur
                 l'essentiel.
               </p>
-              <p className="dx-body text-dx-steel-600">
+              <p className="dx-body text-white/70">
                 Nous opérons avec des processus rigoureux, des outils digitaux
                 avancés et des équipes formées aux normes internationales, pour
                 un service fiable, transparent et mesurable.
@@ -82,12 +82,12 @@ export default function AboutPage() {
               {impacts.map((impact) => (
                 <div
                   key={impact.label}
-                  className="flex flex-col gap-1.5 rounded-lg border border-dx-steel-100 bg-dx-paper p-5"
+                  className="flex flex-col gap-1.5 rounded-lg bg-dx-blue-500 p-6"
                 >
-                  <span className="font-display font-bold text-3xl text-dx-blue-500 leading-tight">
+                  <span className="font-display font-bold text-5xl text-white leading-tight">
                     {impact.value}
                   </span>
-                  <span className="dx-caption text-dx-steel-600">
+                  <span className="dx-caption text-white/75">
                     {impact.label}
                   </span>
                 </div>
@@ -97,12 +97,12 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="dx-section bg-dx-paper border-t border-dx-steel-100">
+      <section className="dx-section bg-dx-navy-500 border-t border-white/10">
         <Container>
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-4 max-w-xl">
               <Eyebrow>Nos valeurs</Eyebrow>
-              <h2 className="dx-h2 text-dx-navy-500">
+              <h2 className="dx-h2 text-white">
                 Ce qui guide chacune de nos interventions
               </h2>
             </div>
@@ -111,10 +111,10 @@ export default function AboutPage() {
               {values.map((value) => (
                 <div
                   key={value.title}
-                  className="flex flex-col gap-3 rounded-lg border border-t-2 border-dx-steel-100 border-t-dx-blue-500 bg-white p-6"
+                  className="flex flex-col gap-3 rounded-lg border border-white/10 border-t-2 border-t-dx-blue-500 bg-white/[0.05] p-6"
                 >
-                  <h3 className="dx-h4 text-dx-navy-500">{value.title}</h3>
-                  <p className="dx-body text-dx-steel-600">
+                  <h3 className="dx-h4 text-white">{value.title}</h3>
+                  <p className="dx-body text-white/70">
                     {value.description}
                   </p>
                 </div>

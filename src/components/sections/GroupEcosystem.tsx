@@ -102,15 +102,15 @@ export function GroupEcosystem() {
                   </span>
                 )}
 
-                {/* Logo */}
+                {/* Logo — self-start prevents flex-col card from stretching it */}
                 <div className="h-10 flex items-center">
                   <Image
                     src={sub.logo}
                     alt={`Logo ${sub.name}`}
                     width={sub.logoWidth}
                     height={sub.logoHeight}
-                    style={{ height: 36, width: "auto", maxWidth: "140px" }}
-                    className={sub.highlighted ? "brightness-0 invert" : "brightness-0 invert opacity-80"}
+                    style={{ height: 34, width: "auto", maxWidth: "130px" }}
+                    className={`self-start ${sub.highlighted ? "brightness-0 invert" : "brightness-0 invert opacity-80"}`}
                   />
                 </div>
 

@@ -26,14 +26,14 @@ export function Footer() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div className="flex flex-col gap-5">
-            {/* Logo — brightness+invert renders white on dark background */}
+            {/* Logo — self-start prevents flex-col from stretching it */}
             <Image
               src={LOGO_DARK_URL}
               alt="DX Facilities"
               width={870}
               height={739}
               style={{ height: 48, width: "auto" }}
-              className="brightness-0 invert opacity-90"
+              className="self-start brightness-0 invert opacity-90"
             />
             <p className="text-sm leading-relaxed text-white/60 max-w-xs">
               Partenaire stratégique B2B pour la gestion intégrale de vos

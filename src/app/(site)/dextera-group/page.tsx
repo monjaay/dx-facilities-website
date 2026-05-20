@@ -111,7 +111,7 @@ export default function DexteraGroupPage() {
                 width={600}
                 height={300}
                 style={{ height: 56, width: "auto" }}
-                className="brightness-0 invert opacity-95"
+                className="self-start brightness-0 invert opacity-95"
                 priority
               />
             </div>
@@ -230,7 +230,7 @@ export default function DexteraGroupPage() {
                   width={600}
                   height={300}
                   style={{ height: 40, width: "auto" }}
-                  className="brightness-0 invert opacity-60"
+                  className="self-start brightness-0 invert opacity-60"
                 />
               </div>
             </div>

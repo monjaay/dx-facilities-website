@@ -42,6 +42,10 @@ export function Hero() {
               se concentrent sur l'essentiel.
             </p>
 
+            <p className="text-dx-blue-300 italic font-medium text-base">
+              Helping you to focus and optimizing your resources!
+            </p>
+
             <div className="flex flex-wrap gap-3 pt-2">
               <Link href="/contact" className="btn btn--primary btn--lg">
                 Demander une évaluation gratuite

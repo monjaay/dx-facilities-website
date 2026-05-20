@@ -26,17 +26,21 @@ export function Footer() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div className="flex flex-col gap-5">
-            {/* True intrinsic: 870 × 739. Display at 52 px height → ~61 px wide */}
+            {/* Logo — brightness+invert renders white on dark background */}
             <Image
               src={LOGO_DARK_URL}
               alt="DX Facilities"
               width={870}
               height={739}
-              style={{ height: 52, width: "auto" }}
+              style={{ height: 48, width: "auto" }}
+              className="brightness-0 invert opacity-90"
             />
             <p className="text-sm leading-relaxed text-white/60 max-w-xs">
               Partenaire stratégique B2B pour la gestion intégrale de vos
               installations au Sénégal et en Afrique de l'Ouest.
+            </p>
+            <p className="text-sm italic text-dx-blue-300 font-medium">
+              Helping you to focus and optimizing your resources!
             </p>
             <p className="text-xs font-semibold uppercase tracking-eyebrow text-white/40">
               Membre de DEXTERA GROUP

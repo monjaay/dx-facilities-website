@@ -108,9 +108,14 @@ export async function POST(request: NextRequest) {
     const subject = `[DX Facilities] Nouvelle demande — ${name} (${company})`;
 
     const apiKey = process.env.RESEND_API_KEY;
+    // PRIMARY recipient — once dxfacilities.com domain is verified in Resend,
+    // change RESEND_FROM to "DX Facilities <noreply@dxfacilities.com>"
+    // and RESEND_TO to "info@dxfacilities.com"
+    const fromAddress = process.env.RESEND_FROM ?? "DX Facilities <onboarding@resend.dev>";
+    const toAddress = process.env.RESEND_TO ?? "monjaay@gmail.com";
 
     if (apiKey) {
-      // Send via Resend API (no npm package needed — plain fetch)
+      // Attempt 1: send to the configured recipient
       const resendRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -118,8 +123,8 @@ export async function POST(request: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "DX Facilities <onboarding@resend.dev>",
-          to: ["info@dxfacilities.com"],
+          from: fromAddress,
+          to: [toAddress],
           reply_to: email,
           subject,
           html,
@@ -129,7 +134,30 @@ export async function POST(request: NextRequest) {
       if (!resendRes.ok) {
         const errBody = await resendRes.text();
         console.error("Resend API error:", resendRes.status, errBody);
-        // Still return success to the user — don't expose email errors
+
+        // Attempt 2: fallback to Resend account owner email if domain not yet verified
+        if (resendRes.status === 403 && toAddress !== "monjaay@gmail.com") {
+          console.log("Falling back to account owner email (domain not yet verified)");
+          const fallbackRes = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: "DX Facilities <onboarding@resend.dev>",
+              to: ["monjaay@gmail.com"],
+              reply_to: email,
+              subject: `[FALLBACK] ${subject}`,
+              html,
+            }),
+          });
+          if (!fallbackRes.ok) {
+            console.error("Fallback email also failed:", await fallbackRes.text());
+          } else {
+            console.log("Fallback email sent to account owner successfully");
+          }
+        }
       }
     } else {
       // Dev fallback: log to console when RESEND_API_KEY is not set

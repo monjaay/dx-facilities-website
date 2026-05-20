@@ -25,6 +25,7 @@ export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -37,9 +38,26 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setLoading(false);
-    setSubmitted(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await res.json() as { error?: string };
+        setError(data.error ?? "Une erreur est survenue. Veuillez réessayer.");
+      }
+    } catch {
+      setError("Erreur de connexion. Vérifiez votre connexion et réessayez.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -176,6 +194,12 @@ export function ContactForm() {
           placeholder="Décrivez votre besoin, vos contraintes, la superficie de vos installations…"
         />
       </div>
+
+      {error && (
+        <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-3">
+          {error}
+        </p>
+      )}
 
       <button
         type="submit"

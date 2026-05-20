@@ -6,7 +6,7 @@ import { CTABand } from "@/components/sections/CTABand";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
 import { ImageSlot } from "@/components/shared/ImageSlot";
-import { Globe, Layers, Leaf, Award } from "lucide-react";
+import { Globe, Layers, Leaf, Award, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "DEXTERA GROUP — Building Legacies, Managing Impact",
@@ -136,9 +136,20 @@ export default function DexteraGroupPage() {
               </p>
             </div>
 
-            <Link href="/contact" className="btn btn--primary btn--lg self-start">
-              Nous contacter
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link href="/contact" className="btn btn--primary btn--lg">
+                Nous contacter
+              </Link>
+              <a
+                href="https://dextera-group.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--lg border border-white/25 bg-transparent text-white/80 hover:text-white hover:border-white/50 flex items-center gap-2"
+              >
+                <ExternalLink size={15} strokeWidth={1.75} />
+                dextera-group.com
+              </a>
+            </div>
           </div>
         </Container>
       </section>

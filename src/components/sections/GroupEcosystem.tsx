@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 
 type Subsidiary = {
   name: string;
@@ -13,6 +13,7 @@ type Subsidiary = {
   logoHeight: number;
   highlighted?: boolean;
   href?: string;
+  website?: string;
 };
 
 const subsidiaries: Subsidiary[] = [
@@ -62,6 +63,7 @@ const subsidiaries: Subsidiary[] = [
     logo: "https://res.cloudinary.com/dcubjimoc/image/upload/v1777295662/LOGOS_OPAL-ok_vu74sm.png",
     logoWidth: 400,
     logoHeight: 200,
+    website: "https://opaldx.com",
   },
 ];
 
@@ -136,15 +138,33 @@ export function GroupEcosystem() {
                   </p>
                 </div>
 
-                {/* CTA for highlighted */}
-                {sub.highlighted && sub.href && (
-                  <Link
-                    href={sub.href}
-                    className="flex items-center gap-1.5 text-xs font-semibold text-white/80 hover:text-white group-hover:gap-2.5 transition-all duration-150 mt-1"
-                  >
-                    Voir nos services <ArrowRight size={12} strokeWidth={2} />
-                  </Link>
-                )}
+                {/* CTA links */}
+                <div className="flex flex-col gap-1.5 mt-1">
+                  {sub.highlighted && sub.href && (
+                    <Link
+                      href={sub.href}
+                      className="flex items-center gap-1.5 text-xs font-semibold text-white/80 hover:text-white group-hover:gap-2.5 transition-all duration-150"
+                    >
+                      Voir nos services <ArrowRight size={12} strokeWidth={2} />
+                    </Link>
+                  )}
+                  {sub.website && (
+                    <a
+                      href={sub.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={[
+                        "flex items-center gap-1.5 text-xs font-semibold transition-all duration-150",
+                        sub.highlighted
+                          ? "text-white/70 hover:text-white"
+                          : "text-dx-blue-300 hover:text-dx-blue-200",
+                      ].join(" ")}
+                    >
+                      <ExternalLink size={11} strokeWidth={2} />
+                      {sub.website.replace("https://", "")}
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>

@@ -164,16 +164,13 @@ function DeployNote() {
   return (
     <div className="rounded-xl border border-dx-blue-500/20 bg-dx-blue-500/[0.06] p-5 flex gap-4">
       <div className="w-8 h-8 rounded-lg bg-dx-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
-        <Upload size={15} className="text-dx-blue-300" />
+        <RefreshCw size={15} className="text-dx-blue-300" />
       </div>
       <div>
-        <p className="text-sm font-semibold text-white/80 mb-1">Déploiement requis</p>
+        <p className="text-sm font-semibold text-white/80 mb-1">Publication automatique</p>
         <p className="text-sm text-white/50 leading-relaxed">
-          Modifications sauvegardées localement. Lancez ensuite :{" "}
-          <code className="text-dx-blue-300 text-xs bg-white/10 px-1.5 py-0.5 rounded">
-            git add -A &amp;&amp; git commit -m &quot;contenu&quot; &amp;&amp; git push
-          </code>{" "}
-          — Vercel redéploie en ~25 secondes.
+          Chaque sauvegarde commit directement sur GitHub. Vercel reconstruit le site en{" "}
+          <span className="text-white/70">~25 secondes</span> — aucune action manuelle requise.
         </p>
       </div>
     </div>

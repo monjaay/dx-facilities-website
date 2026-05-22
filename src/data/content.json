@@ -21,21 +21,19 @@
       "label": "conformité HSE"
     }
   ],
-
   "photos": {
     "hero": "",
     "about-team": "",
     "case-study": "",
     "dextera-group": ""
   },
-
   "team": [
     {
       "name": "El Hadji Malick Gueye",
       "role": "Fondateur et CEO",
       "company": "DEXTERA GROUP",
       "bio": "15+ ans d'expertise en génie civil et management QHSE. Projets de référence : P2i Diamniadio, Tour des Mamelles, Hôtel Azalaï Dakar, TER Dakar-AIBD.",
-      "photo": "/images/team/el-hadji-malick-gueye.jpg"
+      "photo": "https://res.cloudinary.com/dcubjimoc/image/upload/v1779447046/dx-facilities/team/umay7hwaprtell7wh26e.png"
     },
     {
       "name": "Mamadou Ndiaye",

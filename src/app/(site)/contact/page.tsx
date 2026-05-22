@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
+import contentData from "@/data/content.json";
 
 export const metadata: Metadata = {
   title: "Contact — Demande d'évaluation gratuite",
@@ -10,18 +11,18 @@ export const metadata: Metadata = {
     "Contactez DX Facilities pour une évaluation gratuite de vos besoins en facility management. Réponse sous 24 heures.",
 };
 
+const { contactPage } = contentData;
+const { hero, info } = contactPage;
+
 export default function ContactPage() {
   return (
     <>
       <section className="bg-dx-navy-500 py-16">
         <Container>
           <div className="flex flex-col gap-4 max-w-xl">
-            <Eyebrow>Contact</Eyebrow>
-            <h1 className="dx-h1 text-white">Parlons de vos installations</h1>
-            <p className="dx-lead text-white/70">
-              Décrivez vos besoins. Notre équipe vous recontacte sous 24 heures
-              ouvrées avec une première analyse.
-            </p>
+            <Eyebrow>{hero.eyebrow}</Eyebrow>
+            <h1 className="dx-h1 text-white">{hero.title}</h1>
+            <p className="dx-lead text-white/70">{hero.subtitle}</p>
           </div>
         </Container>
       </section>
@@ -43,10 +44,10 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Téléphone fixe</span>
                       <a
-                        href="tel:+22133843164"
+                        href={`tel:${info.phone.replace(/\s/g, "")}`}
                         className="dx-caption text-white/75 hover:text-white transition-colors duration-120"
                       >
-                        +221 33 843 14 64
+                        {info.phone}
                       </a>
                     </div>
                   </div>
@@ -56,10 +57,10 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Mobile</span>
                       <a
-                        href="tel:+221775470346"
+                        href={`tel:${info.mobile.replace(/\s/g, "")}`}
                         className="dx-caption text-white/75 hover:text-white transition-colors duration-120"
                       >
-                        +221 77 547 03 46
+                        {info.mobile}
                       </a>
                     </div>
                   </div>
@@ -69,10 +70,10 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Email</span>
                       <a
-                        href="mailto:info@dxfacilities.com"
+                        href={`mailto:${info.email}`}
                         className="dx-caption text-white/75 hover:text-white transition-colors duration-120"
                       >
-                        info@dxfacilities.com
+                        {info.email}
                       </a>
                     </div>
                   </div>
@@ -81,12 +82,8 @@ export default function ContactPage() {
                     <MapPin size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-white" />
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Adresse</span>
-                      <p className="dx-caption text-white/75 leading-relaxed">
-                        Rte de l'aéroport, lot N°88106
-                        <br />
-                        Yoff ONOMO, Dakar
-                        <br />
-                        Sénégal
+                      <p className="dx-caption text-white/75 leading-relaxed whitespace-pre-line">
+                        {info.address}
                       </p>
                     </div>
                   </div>
@@ -95,10 +92,8 @@ export default function ContactPage() {
                     <Clock size={18} strokeWidth={1.75} className="shrink-0 mt-0.5 text-white" />
                     <div className="flex flex-col gap-0.5">
                       <span className="dx-caption font-semibold text-white">Horaires</span>
-                      <p className="dx-caption text-white/75">
-                        Lun. au Ven. : 8h – 18h
-                        <br />
-                        Astreinte 24/7 pour urgences
+                      <p className="dx-caption text-white/75 whitespace-pre-line">
+                        {info.hours}
                       </p>
                     </div>
                   </div>

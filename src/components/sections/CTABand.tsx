@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import contentData from "@/data/content.json";
+
+const { ctaBand } = contentData;
 
 export function CTABand() {
   return (
@@ -18,22 +21,19 @@ export function CTABand() {
         <div className="relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div className="flex flex-col gap-3 max-w-xl">
             <h2 className="font-display font-bold text-white leading-tight text-3xl lg:text-[42px]">
-              Transformez vos installations en avantage compétitif
+              {ctaBand.title}
             </h2>
-            <p className="text-white/70 text-base">
-              Rejoignez les entreprises qui ont réduit leurs coûts opérationnels
-              de 22&nbsp;% dès la première année de partenariat.
-            </p>
+            <p className="text-white/70 text-base">{ctaBand.subtitle}</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link href="/contact" className="btn btn--inverse btn--lg">
-              Obtenir une évaluation gratuite
+              {ctaBand.ctaPrimary}
             </Link>
             <Link
               href="/services"
               className="btn btn--lg border border-white/30 bg-transparent text-white hover:bg-white/10"
             >
-              Découvrir nos services
+              {ctaBand.ctaSecondary}
             </Link>
           </div>
         </div>

@@ -2,6 +2,9 @@ import Link from "next/link";
 import { DiagonalStripe } from "@/components/shared/DiagonalStripe";
 import { ImageSlot } from "@/components/shared/ImageSlot";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import contentData from "@/data/content.json";
+
+const { hero } = contentData;
 
 export function Hero() {
   return (
@@ -27,31 +30,27 @@ export function Hero() {
       <div className="dx-container relative z-10 py-20 lg:py-[120px]">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
           <div className="flex flex-col gap-6 animate-fade-rise">
-            <Eyebrow>Facility management intégré</Eyebrow>
+            <Eyebrow>{hero.eyebrow}</Eyebrow>
 
             <h1 className="dx-display text-white leading-tight text-5xl lg:text-7xl xl:text-[84px]">
-              Pilotez vos infrastructures.{" "}
-              <span className="text-dx-blue-300">
-                Concentrez-vous sur votre métier.
-              </span>
+              {hero.title}{" "}
+              <span className="text-dx-blue-300">{hero.titleAccent}</span>
             </h1>
 
             <p className="text-lg text-white/80 max-w-[520px] leading-relaxed">
-              Maintenance, énergie, sécurité, propreté : DX Facilities prend
-              en charge l'intégralité de vos installations pour que vos équipes
-              se concentrent sur l'essentiel.
+              {hero.subtitle}
             </p>
 
             <p className="text-dx-blue-300 italic font-medium text-base">
-              Helping you to focus and optimizing your resources!
+              {hero.tagline}
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
               <Link href="/contact" className="btn btn--primary btn--lg">
-                Demander une évaluation gratuite
+                {hero.ctaPrimary}
               </Link>
               <Link href="/services" className="btn btn--inverse btn--lg">
-                Découvrir nos services
+                {hero.ctaSecondary}
               </Link>
             </div>
           </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { services } from "@/data/services";
+import contentData from "@/data/content.json";
 
 const LOGO_DARK_URL =
   "https://res.cloudinary.com/dcubjimoc/image/upload/v1777295664/LOGO_DX_FACILITIES_yc8fuq.png";
@@ -13,20 +14,22 @@ const company = [
   { href: "/mentions-legales", label: "Mentions légales" },
 ];
 
+const { footer, contactPage } = contentData;
+
 export function Footer() {
   const year = new Date().getFullYear();
+  const info = contactPage.info;
 
   return (
     <footer className="bg-[#050810] text-white/70">
       <div className="dx-container py-16">
         {/* Tagline micro-section */}
         <p className="text-sm italic text-white/35 mb-10 border-b border-white/[0.06] pb-10">
-          Moins de contraintes. Plus de performance. Un seul partenaire pour l'ensemble de vos installations.
+          {footer.tagline}
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div className="flex flex-col gap-5">
-            {/* Logo — self-start prevents flex-col from stretching it */}
             <Image
               src={LOGO_DARK_URL}
               alt="DX Facilities"
@@ -36,14 +39,13 @@ export function Footer() {
               className="self-start brightness-0 invert opacity-90"
             />
             <p className="text-sm leading-relaxed text-white/60 max-w-xs">
-              Partenaire stratégique B2B pour la gestion intégrale de vos
-              installations au Sénégal et en Afrique de l'Ouest.
+              {footer.description}
             </p>
             <p className="text-sm italic text-dx-blue-300 font-medium">
-              Helping you to focus and optimizing your resources!
+              {footer.slogan}
             </p>
             <p className="text-xs font-semibold uppercase tracking-eyebrow text-white/40">
-              Membre de DEXTERA GROUP
+              {footer.groupLabel}
             </p>
           </div>
 
@@ -90,37 +92,31 @@ export function Footer() {
             <ul className="flex flex-col gap-3.5">
               <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <Phone size={15} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
-                <span>+221 33 843 14 64</span>
+                <span>{info.phone}</span>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <Phone size={15} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
-                <span>+221 77 547 03 46</span>
+                <span>{info.mobile}</span>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <Mail size={15} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
                 <a
-                  href="mailto:info@dxfacilities.com"
+                  href={`mailto:${info.email}`}
                   className="hover:text-white transition-colors duration-120"
                 >
-                  info@dxfacilities.com
+                  {info.email}
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <MapPin size={15} strokeWidth={1.75} className="shrink-0 mt-0.5 text-dx-blue-300" />
-                <span>
-                  Rte de l'aéroport, lot N°88106
-                  <br />
-                  Yoff ONOMO, Dakar
-                </span>
+                <span className="whitespace-pre-line">{info.address}</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 border-t border-white/[0.08] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <p>
-            © {year} DX Facilities. Tous droits réservés.
-          </p>
+          <p>© {year} DX Facilities. Tous droits réservés.</p>
           <Link
             href="/mentions-legales"
             className="hover:text-white/70 transition-colors duration-120"

@@ -7,9 +7,24 @@ import { CaseStudy } from "@/components/sections/CaseStudy";
 import { CTABand } from "@/components/sections/CTABand";
 
 export const metadata: Metadata = {
-  title: "DX Facilities — Facility Management Intégré au Sénégal",
+  title: "DX Facilities — Facility Management Intégré au Sénégal | Dakar",
   description:
-    "Pilotez vos infrastructures et concentrez-vous sur votre métier. DX Facilities prend en charge la gestion intégrale de vos installations — maintenance, énergie, sécurité, propreté.",
+    "N°1 du facility management intégré au Sénégal. DX Facilities gère la maintenance technique, l'énergie, la sécurité et la propreté de vos installations à Dakar. Évaluation gratuite sous 24 h.",
+  alternates: { canonical: "https://www.dxfacilities.com" },
+  keywords: [
+    "facility management Sénégal",
+    "facility management Dakar",
+    "prestataire maintenance Dakar",
+    "gestion installations Sénégal",
+    "maintenance bâtiment Dakar",
+    "services généraux Dakar",
+  ],
+  openGraph: {
+    url: "https://www.dxfacilities.com",
+    title: "DX Facilities — Facility Management Intégré au Sénégal",
+    description:
+      "N°1 du facility management à Dakar : maintenance, énergie, sécurité, propreté. Évaluation gratuite sous 24 h.",
+  },
 };
 
 export default function HomePage() {

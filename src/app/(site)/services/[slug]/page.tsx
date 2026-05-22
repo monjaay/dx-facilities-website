@@ -19,6 +19,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
 import { CTABand } from "@/components/sections/CTABand";
 import { ImageSlot } from "@/components/shared/ImageSlot";
+import { JsonLd, buildServiceSchema, buildBreadcrumbSchema, BASE_URL } from "@/components/seo/JsonLd";
 
 const iconMap: Record<string, LucideIcon> = {
   Wrench,
@@ -31,6 +32,30 @@ const iconMap: Record<string, LucideIcon> = {
   Users,
 };
 
+// Keyword mapping per service category for richer meta
+const CATEGORY_KEYWORDS: Record<string, string[]> = {
+  "Infrastructure & Technique": [
+    "maintenance technique Dakar", "maintenance bâtiment Sénégal",
+    "entretien installations Dakar", "prestataire maintenance technique Sénégal",
+  ],
+  "Intelligence & Technologie": [
+    "smart building Dakar", "bâtiment connecté Sénégal",
+    "IoT facility management Dakar", "gestion intelligente bâtiment Sénégal",
+  ],
+  "Énergie & Environnement": [
+    "efficacité énergétique Sénégal", "audit énergétique Dakar",
+    "réduction consommation énergie Sénégal", "performance énergétique bâtiment Dakar",
+  ],
+  "Sécurité & Conformité": [
+    "sécurité bâtiment Dakar", "contrôle accès Sénégal",
+    "vidéosurveillance Dakar", "conformité HSE Sénégal",
+  ],
+  "Propreté & Services": [
+    "nettoyage professionnel Dakar", "entretien locaux Sénégal",
+    "services généraux Dakar", "propreté entreprise Sénégal",
+  ],
+};
+
 type Params = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
@@ -41,9 +66,28 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const service = serviceBySlug(slug);
   if (!service) return {};
+
+  const catKeywords = CATEGORY_KEYWORDS[service.category] ?? [];
+  const pageUrl = `${BASE_URL}/services/${slug}`;
+
   return {
-    title: service.title,
-    description: service.intro,
+    title: `${service.title} au Sénégal — DX Facilities Dakar`,
+    description:
+      `${service.tagline} DX Facilities assure ${service.title.toLowerCase()} à Dakar et dans tout le Sénégal. ${service.description} Demandez votre évaluation gratuite.`,
+    alternates: { canonical: pageUrl },
+    keywords: [
+      `${service.title} Sénégal`,
+      `${service.title} Dakar`,
+      `${service.category} Dakar`,
+      "facility management Sénégal",
+      "DX Facilities",
+      ...catKeywords,
+    ],
+    openGraph: {
+      url: pageUrl,
+      title: `${service.title} à Dakar — DX Facilities Sénégal`,
+      description: `${service.tagline} ${service.description}`,
+    },
   };
 }
 
@@ -55,8 +99,24 @@ export default async function ServiceDetailPage({ params }: Params) {
   const Icon = iconMap[service.icon];
   const otherServices = services.filter((s) => s.slug !== slug);
 
+  const serviceSchema = buildServiceSchema({
+    name: service.title,
+    description: service.intro,
+    slug: service.slug,
+    category: service.category,
+  });
+
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Accueil", url: BASE_URL },
+    { name: "Nos services", url: `${BASE_URL}/services` },
+    { name: service.title, url: `${BASE_URL}/services/${slug}` },
+  ]);
+
   return (
     <>
+      <JsonLd data={serviceSchema} />
+      <JsonLd data={breadcrumbSchema} />
+
       {/* Hero section */}
       <section className="bg-dx-navy-500 py-16 lg:py-20">
         <Container>
@@ -89,10 +149,10 @@ export default async function ServiceDetailPage({ params }: Params) {
             {/* Left column */}
             <div className="flex flex-col gap-12">
 
-              {/* Service image — swap by placing a file at /images/services/{slug}.jpg */}
+              {/* Service image */}
               <ImageSlot
                 src={`/images/services/${service.slug}.jpg`}
-                alt={`${service.title} — DX Facilities`}
+                alt={`${service.title} — DX Facilities Sénégal`}
                 aspectRatio="aspect-[16/7]"
                 className="w-full"
               />

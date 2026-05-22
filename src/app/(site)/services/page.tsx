@@ -7,9 +7,25 @@ import { CTABand } from "@/components/sections/CTABand";
 import contentData from "@/data/content.json";
 
 export const metadata: Metadata = {
-  title: "Nos services — Facility Management Intégré",
+  title: "Nos 8 services de Facility Management au Sénégal",
   description:
-    "Découvrez les 8 services de facility management proposés par DX Facilities : maintenance technique, gestion du patrimoine, smart buildings, sécurité et plus encore.",
+    "DX Facilities propose 8 services intégrés à Dakar : maintenance technique, gestion d'actifs, smart buildings, maintenance prédictive, efficacité énergétique, sécurité, propreté, accueil. Un seul prestataire pour tout vos bâtiments.",
+  alternates: { canonical: "https://www.dxfacilities.com/services" },
+  keywords: [
+    "services facility management Sénégal",
+    "maintenance technique Dakar",
+    "gestion actifs immobiliers Sénégal",
+    "smart building Dakar",
+    "sécurité bâtiment Sénégal",
+    "nettoyage professionnel Dakar",
+    "efficacité énergétique Sénégal",
+  ],
+  openGraph: {
+    url: "https://www.dxfacilities.com/services",
+    title: "Nos 8 services de Facility Management au Sénégal — DX Facilities",
+    description:
+      "8 services intégrés pour vos bâtiments à Dakar : maintenance, énergie, sécurité, propreté, smart buildings.",
+  },
 };
 
 const categories = [

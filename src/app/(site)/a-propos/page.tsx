@@ -7,9 +7,23 @@ import { ImageSlot } from "@/components/shared/ImageSlot";
 import contentData from "@/data/content.json";
 
 export const metadata: Metadata = {
-  title: "À propos — Notre mission et notre équipe",
+  title: "À propos de DX Facilities — Expertise Facility Management Dakar",
   description:
-    "DX Facilities : 15+ ans d'expertise en facility management intégré au Sénégal. Découvrez notre mission, nos valeurs et notre équipe de direction.",
+    "15+ ans d'expertise en facility management au Sénégal. DX Facilities, membre de DEXTERA GROUP, gère vos installations à Dakar avec rigueur et innovation. Découvrez notre mission, nos valeurs et notre équipe.",
+  alternates: { canonical: "https://www.dxfacilities.com/a-propos" },
+  keywords: [
+    "DX Facilities à propos",
+    "entreprise facility management Sénégal",
+    "expert maintenance Dakar",
+    "DEXTERA GROUP Sénégal",
+    "équipe facility management Dakar",
+  ],
+  openGraph: {
+    url: "https://www.dxfacilities.com/a-propos",
+    title: "À propos de DX Facilities — Experts en Facility Management à Dakar",
+    description:
+      "15+ ans d'expertise, membre de DEXTERA GROUP. L'équipe qui transforme vos installations au Sénégal.",
+  },
 };
 
 const { aboutPage, photos } = contentData;

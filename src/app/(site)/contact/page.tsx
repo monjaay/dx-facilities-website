@@ -6,9 +6,22 @@ import { Container } from "@/components/layout/Container";
 import contentData from "@/data/content.json";
 
 export const metadata: Metadata = {
-  title: "Contact — Demande d'évaluation gratuite",
+  title: "Contact — Évaluation gratuite de vos besoins en Facility Management",
   description:
-    "Contactez DX Facilities pour une évaluation gratuite de vos besoins en facility management. Réponse sous 24 heures.",
+    "Contactez DX Facilities à Dakar pour une évaluation gratuite de vos besoins en facility management. Maintenance, énergie, sécurité, propreté — réponse sous 24 heures. Tél : +221 33 843 14 64.",
+  alternates: { canonical: "https://www.dxfacilities.com/contact" },
+  keywords: [
+    "contact facility management Dakar",
+    "devis facility management Sénégal",
+    "DX Facilities contact",
+    "évaluation gratuite maintenance Dakar",
+  ],
+  openGraph: {
+    url: "https://www.dxfacilities.com/contact",
+    title: "Contactez DX Facilities — Évaluation gratuite à Dakar",
+    description:
+      "Demandez votre évaluation gratuite en facility management. Basés à Dakar, nous répondons sous 24 h.",
+  },
 };
 
 const { contactPage } = contentData;

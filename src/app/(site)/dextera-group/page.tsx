@@ -10,9 +10,24 @@ import { Globe, Layers, Leaf, Award, ExternalLink, type LucideIcon } from "lucid
 import contentData from "@/data/content.json";
 
 export const metadata: Metadata = {
-  title: "DEXTERA GROUP — Building Legacies, Managing Impact",
+  title: "DEXTERA GROUP — Groupe Panafricain Immobilier & Facility Management",
   description:
-    "Groupe panafricain pluridisciplinaire spécialisé dans le développement immobilier, la construction, la gestion d'actifs, les certifications environnementales et les services à haute valeur ajoutée.",
+    "DEXTERA GROUP, groupe panafricain pluridisciplinaire basé à Dakar, Sénégal. Développement immobilier, construction, facility management, certifications environnementales et services à haute valeur ajoutée en Afrique de l'Ouest.",
+  alternates: { canonical: "https://www.dxfacilities.com/dextera-group" },
+  keywords: [
+    "DEXTERA GROUP Sénégal",
+    "groupe immobilier Dakar",
+    "groupe panafricain Dakar",
+    "développement immobilier Sénégal",
+    "certification environnementale Sénégal",
+    "investissement immobilier Afrique de l'Ouest",
+  ],
+  openGraph: {
+    url: "https://www.dxfacilities.com/dextera-group",
+    title: "DEXTERA GROUP — Groupe Panafricain | Sénégal & Afrique de l'Ouest",
+    description:
+      "Groupe panafricain spécialisé en immobilier, construction et facility management. Basé à Dakar.",
+  },
 };
 
 const GROUP_LOGO =

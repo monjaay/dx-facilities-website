@@ -72,7 +72,12 @@ export const ORG_IDENTITY = {
     "Sécurité des bâtiments",
     "Nettoyage professionnel",
   ],
-  sameAs: ["https://dextera-group.com"],
+  sameAs: [
+    "https://dextera-group.com",
+    "https://web.facebook.com/profile.php?id=61572254160652",
+    "https://www.instagram.com/dx_facilities/",
+    "https://sn.linkedin.com/company/dx-facilities",
+  ],
   parentOrganization: {
     "@type": "Organization",
     name: "DEXTERA GROUP",

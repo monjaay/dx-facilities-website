@@ -1,89 +1,64 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, mkdir, readFile } from "fs/promises";
-import path from "path";
 
-// Allowed folders — keep list small to avoid path traversal
-const ALLOWED_FOLDERS = new Set(["team", "services", "root"]);
+// Uploads go directly to Cloudinary (unsigned upload preset).
+// Vercel's filesystem is read-only — writing to public/ is not possible at runtime.
 
-// Sanitise to alphanumeric, dashes, dots only
-function safeName(raw: string): string {
-  return raw
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9._-]/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
+const CLOUD_NAME    = process.env.CLOUDINARY_CLOUD_NAME    ?? "dcubjimoc";
+const UPLOAD_PRESET = process.env.CLOUDINARY_UPLOAD_PRESET ?? "dx_facilities_admin";
+const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
+
+function checkAuth(req: NextRequest): boolean {
+  return req.headers.get("x-admin-password") === process.env.ADMIN_PASSWORD;
 }
 
-// POST /api/upload — save image file + update team-photos.json when relevant
 export async function POST(request: NextRequest) {
-  // Auth check
-  const authHeader = request.headers.get("x-admin-password");
-  const adminPassword = process.env.ADMIN_PASSWORD ?? "dxadmin2025";
-
-  if (authHeader !== adminPassword) {
+  if (!checkAuth(request)) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
   try {
     const formData = await request.formData();
     const file = formData.get("file");
-    const rawFilename = formData.get("filename");
-    const folder = formData.get("folder") ?? "team";
-    const memberSlug = formData.get("memberSlug"); // optional — used for team photos
+    const folder = (formData.get("folder") as string | null) ?? "dx-facilities";
 
     if (!(file instanceof File)) {
       return NextResponse.json({ error: "Fichier manquant" }, { status: 400 });
     }
-    if (typeof rawFilename !== "string" || !rawFilename) {
-      return NextResponse.json({ error: "Nom de fichier manquant" }, { status: 400 });
-    }
-    if (typeof folder !== "string" || !ALLOWED_FOLDERS.has(folder)) {
-      return NextResponse.json({ error: "Dossier non autorisé" }, { status: 400 });
-    }
 
-    const filename = safeName(rawFilename);
-    if (!filename) {
-      return NextResponse.json({ error: "Nom de fichier invalide" }, { status: 400 });
-    }
+    // Build the Cloudinary folder path (keeps images organized)
+    const cloudFolder = folder === "root"
+      ? "dx-facilities/site"
+      : `dx-facilities/${folder}`;
 
-    // Write the image file
-    const imagesRoot = path.join(process.cwd(), "public", "images");
-    const targetDir =
-      folder === "root" ? imagesRoot : path.join(imagesRoot, folder);
-    await mkdir(targetDir, { recursive: true });
+    // Forward the file to Cloudinary as a multipart upload
+    const cloudForm = new FormData();
+    cloudForm.append("file", file);
+    cloudForm.append("upload_preset", UPLOAD_PRESET);
+    cloudForm.append("folder", cloudFolder);
 
-    const filePath = path.join(targetDir, filename);
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(filePath, buffer);
+    const res = await fetch(CLOUDINARY_URL, {
+      method: "POST",
+      body: cloudForm,
+    });
 
-    const publicPath =
-      folder === "root"
-        ? `/images/${filename}`
-        : `/images/${folder}/${filename}`;
-
-    // If this is a team photo, update team-photos.json
-    if (folder === "team" && typeof memberSlug === "string" && memberSlug) {
-      const photosJsonPath = path.join(
-        process.cwd(),
-        "src",
-        "data",
-        "team-photos.json"
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error("Cloudinary error:", errText);
+      return NextResponse.json(
+        { error: `Cloudinary: ${res.status} — ${errText}` },
+        { status: 502 }
       );
-      let current: Record<string, string> = {};
-      try {
-        current = JSON.parse(await readFile(photosJsonPath, "utf-8")) as Record<string, string>;
-      } catch {
-        // File may not exist yet — start fresh
-      }
-      current[memberSlug] = publicPath;
-      await writeFile(photosJsonPath, JSON.stringify(current, null, 2) + "\n");
     }
 
-    return NextResponse.json({ success: true, path: publicPath });
+    const data = (await res.json()) as { secure_url: string; public_id: string };
+
+    return NextResponse.json({
+      success: true,
+      path: data.secure_url,       // HTTPS Cloudinary URL
+      public_id: data.public_id,
+    });
   } catch (err) {
     console.error("Upload error:", err);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }

@@ -43,7 +43,7 @@ const SERVICE_SLUGS = [
 // ---------------------------------------------------------------------------
 
 interface CKpi   { value: string; unit: string; label: string }
-interface CMember { name: string; role: string; company: string; bio: string }
+interface CMember { name: string; role: string; company: string; bio: string; photo: string }
 interface CHero  { eyebrow: string; title: string; titleAccent: string; subtitle: string; tagline: string; ctaPrimary: string; ctaSecondary: string }
 interface CCTABand { title: string; subtitle: string; ctaPrimary: string; ctaSecondary: string }
 interface CWhyReason { icon: string; title: string; description: string }
@@ -65,7 +65,10 @@ interface CContactInfo { phone: string; mobile: string; email: string; address: 
 interface CContactPage { hero: { eyebrow: string; title: string; subtitle: string }; info: CContactInfo }
 interface CFooter { tagline: string; description: string; slogan: string; groupLabel: string }
 
+interface CSitePhotos { hero: string; "about-team": string; "case-study": string; "dextera-group": string }
+
 interface SiteContent {
+  photos: CSitePhotos;
   kpis: CKpi[]; team: CMember[]; hero: CHero; ctaBand: CCTABand;
   whyUs: CWhyUs; caseStudy: CCaseStudy; servicesPage: CServicesPage;
   services: CService[]; aboutPage: CAboutPage; groupPage: CGroupPage;
@@ -436,21 +439,50 @@ export default function AdminPage() {
     reader.readAsDataURL(file);
   }, []);
 
-  const handleUpload = useCallback(async (key: string, filename: string, folder: string, memberSlug?: string) => {
+  const handleUpload = useCallback(async (
+    key: string,
+    folder: string,
+    // How to persist the URL back into content.json draft:
+    persistTo: { type: "team"; index: number } | { type: "sitePhoto"; photoKey: keyof CSitePhotos } | { type: "none" }
+  ) => {
     const slot = slots[key];
     if (!slot?.file) return;
     setSlots(p => ({ ...p, [key]: { ...p[key], status: "uploading" } }));
-    const ext = slot.file.name.split(".").pop() ?? "jpg";
-    const finalFilename = filename.includes(".") ? filename : `${filename}.${ext}`;
     const fd = new FormData();
-    fd.append("file", slot.file); fd.append("filename", finalFilename); fd.append("folder", folder);
-    if (memberSlug) fd.append("memberSlug", memberSlug);
+    fd.append("file", slot.file);
+    fd.append("folder", folder);
     try {
       const res = await fetch("/api/upload", { method: "POST", headers: { "x-admin-password": password }, body: fd });
-      if (res.ok) {
-        const data = await res.json() as { path: string };
-        setSlots(p => ({ ...p, [key]: { ...p[key], status: "success", savedPath: data.path, file: null } }));
-      } else setSlots(p => ({ ...p, [key]: { ...p[key], status: "error" } }));
+      if (!res.ok) { setSlots(p => ({ ...p, [key]: { ...p[key], status: "error" } })); return; }
+      const data = await res.json() as { path: string };
+      const url = data.path;
+      // Persist URL into draft
+      if (persistTo.type === "team") {
+        const i = persistTo.index;
+        setDraft(prev => {
+          if (!prev) return prev;
+          const team = prev.team.map((m, j) => j === i ? { ...m, photo: url } : m);
+          const next = { ...prev, team };
+          // Auto-save to GitHub
+          fetch("/api/admin-content", {
+            method: "POST", headers: { "Content-Type": "application/json", "x-admin-password": password },
+            body: JSON.stringify(next),
+          }).catch(() => {});
+          return next;
+        });
+      } else if (persistTo.type === "sitePhoto") {
+        const pk = persistTo.photoKey;
+        setDraft(prev => {
+          if (!prev) return prev;
+          const next = { ...prev, photos: { ...prev.photos, [pk]: url } };
+          fetch("/api/admin-content", {
+            method: "POST", headers: { "Content-Type": "application/json", "x-admin-password": password },
+            body: JSON.stringify(next),
+          }).catch(() => {});
+          return next;
+        });
+      }
+      setSlots(p => ({ ...p, [key]: { ...p[key], status: "success", savedPath: url, file: null } }));
     } catch { setSlots(p => ({ ...p, [key]: { ...p[key], status: "error" } })); }
   }, [slots, password]);
 
@@ -555,16 +587,14 @@ export default function AdminPage() {
                 <p className="text-sm text-white/45 mt-1">JPG ou PNG, ratio 1:1, minimum 600 × 600 px.</p>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                {team.map(member => {
-                  const slug = nameToSlug(member.name);
-                  return (
-                    <PhotoCard key={member.name} label={member.name} subtitle={member.role}
-                      currentSrc={`/images/team/${slug}.jpg`} slotState={slots[member.name]}
-                      onFileSelect={f => handleFileSelect(member.name, f)}
-                      onUpload={() => handleUpload(member.name, `${slug}.jpg`, "team", slug)}
-                      onReset={() => resetSlot(member.name)} aspect="aspect-square" />
-                  );
-                })}
+                {team.map((member, i) => (
+                  <PhotoCard key={member.name} label={member.name} subtitle={member.role}
+                    currentSrc={draft?.team[i]?.photo || undefined}
+                    slotState={slots[member.name]}
+                    onFileSelect={f => handleFileSelect(member.name, f)}
+                    onUpload={() => handleUpload(member.name, "team", { type: "team", index: i })}
+                    onReset={() => resetSlot(member.name)} aspect="aspect-square" />
+                ))}
               </div>
             </section>
 
@@ -575,10 +605,11 @@ export default function AdminPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {SITE_IMAGES.map(img => (
-                  <PhotoCard key={img.key} label={img.label} currentSrc={`/images/${img.filename}`}
+                  <PhotoCard key={img.key} label={img.label}
+                    currentSrc={draft?.photos?.[img.key as keyof CSitePhotos] || `/images/${img.filename}`}
                     slotState={slots[img.key]}
                     onFileSelect={f => handleFileSelect(img.key, f)}
-                    onUpload={() => handleUpload(img.key, img.filename, img.folder)}
+                    onUpload={() => handleUpload(img.key, img.folder, { type: "sitePhoto", photoKey: img.key as keyof CSitePhotos })}
                     onReset={() => resetSlot(img.key)} aspect="aspect-video" />
                 ))}
               </div>
@@ -597,7 +628,7 @@ export default function AdminPage() {
                     currentSrc={`/images/services/${svc.slug}.jpg`}
                     slotState={slots["svc-" + svc.slug]}
                     onFileSelect={f => handleFileSelect("svc-" + svc.slug, f)}
-                    onUpload={() => handleUpload("svc-" + svc.slug, `${svc.slug}.jpg`, "services")}
+                    onUpload={() => handleUpload("svc-" + svc.slug, "services", { type: "none" })}
                     onReset={() => resetSlot("svc-" + svc.slug)} aspect="aspect-video" />
                 ))}
               </div>

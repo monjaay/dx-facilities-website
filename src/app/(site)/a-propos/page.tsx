@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "DX Facilities : 15+ ans d'expertise en facility management intégré au Sénégal. Découvrez notre mission, nos valeurs et notre équipe de direction.",
 };
 
-const { aboutPage } = contentData;
+const { aboutPage, photos } = contentData;
 
 export default function AboutPage() {
   return (
@@ -75,7 +75,7 @@ export default function AboutPage() {
             </div>
 
             <ImageSlot
-              src="/images/about-team.jpg"
+              src={photos["about-team"] || "/images/about-team.jpg"}
               alt="Équipe DX Facilities en réunion opérationnelle"
               aspectRatio="aspect-[16/7]"
               className="w-full mt-4"

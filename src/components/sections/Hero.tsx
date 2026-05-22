@@ -4,7 +4,7 @@ import { ImageSlot } from "@/components/shared/ImageSlot";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import contentData from "@/data/content.json";
 
-const { hero } = contentData;
+const { hero, photos } = contentData;
 
 export function Hero() {
   return (
@@ -57,7 +57,7 @@ export function Hero() {
 
           <div className="hidden lg:block">
             <ImageSlot
-              src="/images/hero.jpg"
+              src={photos.hero || "/images/hero.jpg"}
               alt="Technicien DX Facilities en intervention sur site"
               aspectRatio="aspect-[4/5]"
               className="w-full max-w-md mx-auto"

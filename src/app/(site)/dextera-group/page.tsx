@@ -20,7 +20,7 @@ const GROUP_LOGO =
 
 const pillarIconMap: Record<string, LucideIcon> = { Globe, Layers, Leaf, Award };
 
-const { groupPage } = contentData;
+const { groupPage, photos } = contentData;
 
 export default function DexteraGroupPage() {
   return (
@@ -120,7 +120,7 @@ export default function DexteraGroupPage() {
       <section className="bg-dx-navy-500 border-y border-white/[0.06]">
         <Container className="py-0">
           <ImageSlot
-            src="/images/dextera-group.jpg"
+            src={photos["dextera-group"] || "/images/dextera-group.jpg"}
             alt="Immeuble de bureaux moderne, projets DEXTERA GROUP en Afrique de l'Ouest"
             aspectRatio="aspect-[21/8]"
             className="w-full rounded-none"

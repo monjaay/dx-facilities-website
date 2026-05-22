@@ -3,7 +3,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
 import contentData from "@/data/content.json";
 
-const { caseStudy } = contentData;
+const { caseStudy, photos } = contentData;
 
 export function CaseStudy() {
   return (
@@ -11,7 +11,7 @@ export function CaseStudy() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <ImageSlot
-            src="/images/case-study.jpg"
+            src={photos["case-study"] || "/images/case-study.jpg"}
             alt="Complexe de bureaux moderne géré par DX Facilities"
             className="w-full"
           />

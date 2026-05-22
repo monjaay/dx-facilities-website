@@ -1,9 +1,25 @@
 {
   "kpis": [
-    { "value": "15+", "unit": "ans", "label": "d'expertise cumulée" },
-    { "value": "99,2", "unit": "%", "label": "de disponibilité cible" },
-    { "value": "24", "unit": "/7", "label": "support opérationnel" },
-    { "value": "100", "unit": "%", "label": "conformité HSE" }
+    {
+      "value": "15+",
+      "unit": "ans",
+      "label": "d'expertise cumulée"
+    },
+    {
+      "value": "99,2",
+      "unit": "%",
+      "label": "de disponibilité cible"
+    },
+    {
+      "value": "24",
+      "unit": "/7",
+      "label": "support opérationnel"
+    },
+    {
+      "value": "100",
+      "unit": "%",
+      "label": "conformité HSE"
+    }
   ],
 
   "photos": {
@@ -50,7 +66,6 @@
       "photo": ""
     }
   ],
-
   "hero": {
     "eyebrow": "Facility management intégré",
     "title": "Pilotez vos infrastructures.",
@@ -60,14 +75,12 @@
     "ctaPrimary": "Demander une évaluation gratuite",
     "ctaSecondary": "Découvrir nos services"
   },
-
   "ctaBand": {
     "title": "Transformez vos installations en avantage compétitif",
     "subtitle": "Rejoignez les entreprises qui ont réduit leurs coûts opérationnels de 22 % dès la première année de partenariat.",
     "ctaPrimary": "Obtenir une évaluation gratuite",
     "ctaSecondary": "Découvrir nos services"
   },
-
   "whyUs": {
     "eyebrow": "Notre différence",
     "title": "Pourquoi choisir",
@@ -96,20 +109,27 @@
       }
     ]
   },
-
   "caseStudy": {
     "eyebrow": "Étude de cas",
     "title": "Réduction de 22 % des coûts opérationnels pour un complexe de bureaux de 15 000 m²",
     "body": "En déployant une stratégie de maintenance prédictive couplée à un système de monitoring énergétique, DX Facilities a permis à ce client de réduire ses coûts opérationnels de 22 % en 18 mois, tout en maintenant un taux de disponibilité de 99,4 %.",
     "stats": [
-      { "value": "- 22 %", "label": "coûts opérationnels" },
-      { "value": "99,4 %", "label": "disponibilité" },
-      { "value": "18 mois", "label": "durée de déploiement" }
+      {
+        "value": "- 22 %",
+        "label": "coûts opérationnels"
+      },
+      {
+        "value": "99,4 %",
+        "label": "disponibilité"
+      },
+      {
+        "value": "18 mois",
+        "label": "durée de déploiement"
+      }
     ],
     "quote": "DX Facilities a transformé notre gestion des installations. Nous avons enfin une visibilité complète sur notre patrimoine technique.",
     "quoteCite": "Directeur des opérations, groupe immobilier dakarois"
   },
-
   "servicesPage": {
     "hero": {
       "eyebrow": "Nos services",
@@ -120,13 +140,21 @@
       "eyebrow": "Résultats clients",
       "title": "Des gains mesurables, dès les premiers mois",
       "items": [
-        { "value": "- 22 %", "label": "de coûts opérationnels en moyenne dès la 1re année" },
-        { "value": "- 40 %", "label": "de temps d'arrêt non planifiés grâce à la maintenance prédictive" },
-        { "value": "+ 15 %", "label": "de satisfaction des occupants mesurée sur 12 mois" }
+        {
+          "value": "- 22 %",
+          "label": "de coûts opérationnels en moyenne dès la 1re année"
+        },
+        {
+          "value": "- 40 %",
+          "label": "de temps d'arrêt non planifiés grâce à la maintenance prédictive"
+        },
+        {
+          "value": "+ 15 %",
+          "label": "de satisfaction des occupants mesurée sur 12 mois"
+        }
       ]
     }
   },
-
   "services": [
     {
       "slug": "maintenance-technique",
@@ -146,15 +174,36 @@
         "Reporting mensuel d'activité et indicateurs de performance"
       ],
       "process": [
-        { "step": "Audit technique initial", "description": "État des lieux exhaustif de tous vos équipements : inventaire, âge, état, criticité. Base de travail de toutes nos interventions." },
-        { "step": "Plan de maintenance personnalisé", "description": "Programme préventif calé sur les préconisations fabricants et votre contexte d'exploitation. Planification sur 12 mois validée avec vous." },
-        { "step": "Interventions et traçabilité", "description": "Chaque visite est documentée en temps réel dans notre CMMS : technicien, durée, pièces, observations. Zéro oubli, zéro approximation." },
-        { "step": "Reporting et amélioration continue", "description": "Tableau de bord mensuel avec indicateurs clés. Revue trimestrielle pour ajuster le plan et anticiper les renouvellements." }
+        {
+          "step": "Audit technique initial",
+          "description": "État des lieux exhaustif de tous vos équipements : inventaire, âge, état, criticité. Base de travail de toutes nos interventions."
+        },
+        {
+          "step": "Plan de maintenance personnalisé",
+          "description": "Programme préventif calé sur les préconisations fabricants et votre contexte d'exploitation. Planification sur 12 mois validée avec vous."
+        },
+        {
+          "step": "Interventions et traçabilité",
+          "description": "Chaque visite est documentée en temps réel dans notre CMMS : technicien, durée, pièces, observations. Zéro oubli, zéro approximation."
+        },
+        {
+          "step": "Reporting et amélioration continue",
+          "description": "Tableau de bord mensuel avec indicateurs clés. Revue trimestrielle pour ajuster le plan et anticiper les renouvellements."
+        }
       ],
       "kpis": [
-        { "value": "99,2 %", "label": "taux de disponibilité cible" },
-        { "value": "< 4 h", "label": "délai de réponse garanti" },
-        { "value": "100 %", "label": "interventions documentées" }
+        {
+          "value": "99,2 %",
+          "label": "taux de disponibilité cible"
+        },
+        {
+          "value": "< 4 h",
+          "label": "délai de réponse garanti"
+        },
+        {
+          "value": "100 %",
+          "label": "interventions documentées"
+        }
       ]
     },
     {
@@ -175,15 +224,36 @@
         "Valorisation comptable et amortissement technique du patrimoine"
       ],
       "process": [
-        { "step": "Inventaire et codification", "description": "Répertoire exhaustif de tous vos équipements avec numérotation, localisation, référence fabricant et date de mise en service." },
-        { "step": "Évaluation et criticité", "description": "Analyse de l'état de chaque actif, calcul de la durée de vie résiduelle et classification par niveau de criticité pour votre activité." },
-        { "step": "Plan CAPEX pluriannuel", "description": "Projection sur 5 ans des besoins de renouvellement avec chiffrage et priorisation. Intégré dans votre cycle budgétaire annuel." },
-        { "step": "Reporting continu", "description": "Tableau de bord patrimonial mis à jour en temps réel. Alertes automatiques dès qu'un équipement approche de son seuil de renouvellement." }
+        {
+          "step": "Inventaire et codification",
+          "description": "Répertoire exhaustif de tous vos équipements avec numérotation, localisation, référence fabricant et date de mise en service."
+        },
+        {
+          "step": "Évaluation et criticité",
+          "description": "Analyse de l'état de chaque actif, calcul de la durée de vie résiduelle et classification par niveau de criticité pour votre activité."
+        },
+        {
+          "step": "Plan CAPEX pluriannuel",
+          "description": "Projection sur 5 ans des besoins de renouvellement avec chiffrage et priorisation. Intégré dans votre cycle budgétaire annuel."
+        },
+        {
+          "step": "Reporting continu",
+          "description": "Tableau de bord patrimonial mis à jour en temps réel. Alertes automatiques dès qu'un équipement approche de son seuil de renouvellement."
+        }
       ],
       "kpis": [
-        { "value": "100 %", "label": "du patrimoine inventorié" },
-        { "value": "- 15 %", "label": "de dépenses CAPEX imprévues" },
-        { "value": "5 ans", "label": "de visibilité budgétaire" }
+        {
+          "value": "100 %",
+          "label": "du patrimoine inventorié"
+        },
+        {
+          "value": "- 15 %",
+          "label": "de dépenses CAPEX imprévues"
+        },
+        {
+          "value": "5 ans",
+          "label": "de visibilité budgétaire"
+        }
       ]
     },
     {
@@ -204,15 +274,36 @@
         "Interopérabilité avec vos systèmes existants"
       ],
       "process": [
-        { "step": "Audit de connectivité", "description": "Évaluation de vos infrastructures réseau, de vos systèmes existants et définition de l'architecture cible." },
-        { "step": "Déploiement des capteurs", "description": "Installation de capteurs calibrés pour chaque usage : température, présence, consommation, accès, qualité d'air." },
-        { "step": "Intégration et paramétrage", "description": "Connexion de tous les équipements à la plateforme GTB. Configuration des scénarios automatiques et des règles d'alerte." },
-        { "step": "Formation et prise en main", "description": "Accompagnement de vos équipes sur les tableaux de bord. Assistance continue pour faire évoluer les paramètres." }
+        {
+          "step": "Audit de connectivité",
+          "description": "Évaluation de vos infrastructures réseau, de vos systèmes existants et définition de l'architecture cible."
+        },
+        {
+          "step": "Déploiement des capteurs",
+          "description": "Installation de capteurs calibrés pour chaque usage : température, présence, consommation, accès, qualité d'air."
+        },
+        {
+          "step": "Intégration et paramétrage",
+          "description": "Connexion de tous les équipements à la plateforme GTB. Configuration des scénarios automatiques et des règles d'alerte."
+        },
+        {
+          "step": "Formation et prise en main",
+          "description": "Accompagnement de vos équipes sur les tableaux de bord. Assistance continue pour faire évoluer les paramètres."
+        }
       ],
       "kpis": [
-        { "value": "24/7", "label": "monitoring en continu" },
-        { "value": "< 1 s", "label": "latence des alertes" },
-        { "value": "100 %", "label": "interopérabilité garantie" }
+        {
+          "value": "24/7",
+          "label": "monitoring en continu"
+        },
+        {
+          "value": "< 1 s",
+          "label": "latence des alertes"
+        },
+        {
+          "value": "100 %",
+          "label": "interopérabilité garantie"
+        }
       ]
     },
     {
@@ -233,15 +324,36 @@
         "Rapport d'analyse et amélioration continue du modèle prédictif"
       ],
       "process": [
-        { "step": "Installation des capteurs", "description": "Déploiement de capteurs multi-paramètres sur vos équipements critiques : moteurs, compresseurs, groupes électrogènes, CVC." },
-        { "step": "Collecte et modélisation", "description": "Établissement d'une baseline de comportement normal pour chaque équipement. Les algorithmes apprennent vos cycles d'exploitation." },
-        { "step": "Détection et alerte", "description": "Surveillance permanente des écarts. Génération automatique d'alertes classées par urgence avec recommandation d'intervention." },
-        { "step": "Intervention et retour d'expérience", "description": "Planification de l'intervention au bon moment. Analyse post-intervention pour affiner le modèle prédictif." }
+        {
+          "step": "Installation des capteurs",
+          "description": "Déploiement de capteurs multi-paramètres sur vos équipements critiques : moteurs, compresseurs, groupes électrogènes, CVC."
+        },
+        {
+          "step": "Collecte et modélisation",
+          "description": "Établissement d'une baseline de comportement normal pour chaque équipement. Les algorithmes apprennent vos cycles d'exploitation."
+        },
+        {
+          "step": "Détection et alerte",
+          "description": "Surveillance permanente des écarts. Génération automatique d'alertes classées par urgence avec recommandation d'intervention."
+        },
+        {
+          "step": "Intervention et retour d'expérience",
+          "description": "Planification de l'intervention au bon moment. Analyse post-intervention pour affiner le modèle prédictif."
+        }
       ],
       "kpis": [
-        { "value": "- 40 %", "label": "de pannes non planifiées" },
-        { "value": "+ 30 %", "label": "de durée de vie équipements" },
-        { "value": "0", "label": "arrêt de production non anticipé" }
+        {
+          "value": "- 40 %",
+          "label": "de pannes non planifiées"
+        },
+        {
+          "value": "+ 30 %",
+          "label": "de durée de vie équipements"
+        },
+        {
+          "value": "0",
+          "label": "arrêt de production non anticipé"
+        }
       ]
     },
     {
@@ -262,15 +374,36 @@
         "Recommandations d'équipements à haute efficacité énergétique"
       ],
       "process": [
-        { "step": "Audit énergétique", "description": "Mesure et analyse de toutes vos consommations sur 12 mois. Identification des postes les plus énergivores et des anomalies." },
-        { "step": "Plan d'optimisation", "description": "Sélection des actions à fort impact ROI : réglages, automatisation, remplacement d'équipements, sensibilisation des occupants." },
-        { "step": "Mise en œuvre", "description": "Déploiement des actions par ordre de priorité. Coordination avec vos équipes et vos prestataires existants." },
-        { "step": "Suivi et reporting", "description": "Mesure mensuelle des économies réalisées. Tableau de bord ESG et rapport de performance énergétique pour vos parties prenantes." }
+        {
+          "step": "Audit énergétique",
+          "description": "Mesure et analyse de toutes vos consommations sur 12 mois. Identification des postes les plus énergivores et des anomalies."
+        },
+        {
+          "step": "Plan d'optimisation",
+          "description": "Sélection des actions à fort impact ROI : réglages, automatisation, remplacement d'équipements, sensibilisation des occupants."
+        },
+        {
+          "step": "Mise en œuvre",
+          "description": "Déploiement des actions par ordre de priorité. Coordination avec vos équipes et vos prestataires existants."
+        },
+        {
+          "step": "Suivi et reporting",
+          "description": "Mesure mensuelle des économies réalisées. Tableau de bord ESG et rapport de performance énergétique pour vos parties prenantes."
+        }
       ],
       "kpis": [
-        { "value": "- 18 %", "label": "de consommation en moyenne" },
-        { "value": "12 mois", "label": "retour sur investissement" },
-        { "value": "ISO 50001", "label": "compatible" }
+        {
+          "value": "- 18 %",
+          "label": "de consommation en moyenne"
+        },
+        {
+          "value": "12 mois",
+          "label": "retour sur investissement"
+        },
+        {
+          "value": "ISO 50001",
+          "label": "compatible"
+        }
       ]
     },
     {
@@ -291,15 +424,36 @@
         "Rapports d'incidents et tableaux de bord sécurité"
       ],
       "process": [
-        { "step": "Analyse des risques", "description": "Évaluation complète de votre contexte : nature des activités, flux de personnes, valeur des actifs, contraintes réglementaires." },
-        { "step": "Conception du dispositif", "description": "Plan de sécurité sur mesure combinant surveillance humaine, systèmes électroniques et procédures d'urgence." },
-        { "step": "Déploiement et formation", "description": "Mise en place des équipements et des équipes. Formation de vos collaborateurs aux procédures d'urgence et d'évacuation." },
-        { "step": "Supervision continue", "description": "Pilotage opérationnel 24/7. Gestion des incidents en temps réel et reporting régulier sur l'état de la sécurité." }
+        {
+          "step": "Analyse des risques",
+          "description": "Évaluation complète de votre contexte : nature des activités, flux de personnes, valeur des actifs, contraintes réglementaires."
+        },
+        {
+          "step": "Conception du dispositif",
+          "description": "Plan de sécurité sur mesure combinant surveillance humaine, systèmes électroniques et procédures d'urgence."
+        },
+        {
+          "step": "Déploiement et formation",
+          "description": "Mise en place des équipements et des équipes. Formation de vos collaborateurs aux procédures d'urgence et d'évacuation."
+        },
+        {
+          "step": "Supervision continue",
+          "description": "Pilotage opérationnel 24/7. Gestion des incidents en temps réel et reporting régulier sur l'état de la sécurité."
+        }
       ],
       "kpis": [
-        { "value": "24/7", "label": "surveillance active" },
-        { "value": "100 %", "label": "conformité réglementaire" },
-        { "value": "< 3 min", "label": "délai d'intervention garanti" }
+        {
+          "value": "24/7",
+          "label": "surveillance active"
+        },
+        {
+          "value": "100 %",
+          "label": "conformité réglementaire"
+        },
+        {
+          "value": "< 3 min",
+          "label": "délai d'intervention garanti"
+        }
       ]
     },
     {
@@ -320,15 +474,36 @@
         "Interventions d'urgence et remise en état ponctuelle"
       ],
       "process": [
-        { "step": "Diagnostic des espaces", "description": "Cartographie de vos locaux, identification des contraintes (horaires, zones sensibles, matériaux) et définition du plan de nettoyage." },
-        { "step": "Mise en place des équipes", "description": "Sélection, formation et équipement des agents. Attribution par zone pour garantir la continuité et la qualité du service." },
-        { "step": "Prestations et protocoles", "description": "Exécution selon le plan validé. Produits certifiés, matériels adaptés à chaque surface, respect des normes d'hygiène sectorielles." },
-        { "step": "Contrôle qualité", "description": "Audit hebdomadaire par grille standardisée. Retours clients intégrés, actions correctives immédiates, reporting mensuel." }
+        {
+          "step": "Diagnostic des espaces",
+          "description": "Cartographie de vos locaux, identification des contraintes (horaires, zones sensibles, matériaux) et définition du plan de nettoyage."
+        },
+        {
+          "step": "Mise en place des équipes",
+          "description": "Sélection, formation et équipement des agents. Attribution par zone pour garantir la continuité et la qualité du service."
+        },
+        {
+          "step": "Prestations et protocoles",
+          "description": "Exécution selon le plan validé. Produits certifiés, matériels adaptés à chaque surface, respect des normes d'hygiène sectorielles."
+        },
+        {
+          "step": "Contrôle qualité",
+          "description": "Audit hebdomadaire par grille standardisée. Retours clients intégrés, actions correctives immédiates, reporting mensuel."
+        }
       ],
       "kpis": [
-        { "value": "100 %", "label": "satisfaction client cible" },
-        { "value": "7j/7", "label": "disponibilité des équipes" },
-        { "value": "0", "label": "non-conformité en audit" }
+        {
+          "value": "100 %",
+          "label": "satisfaction client cible"
+        },
+        {
+          "value": "7j/7",
+          "label": "disponibilité des équipes"
+        },
+        {
+          "value": "0",
+          "label": "non-conformité en audit"
+        }
       ]
     },
     {
@@ -349,19 +524,39 @@
         "Reporting des flux et indicateurs d'activité"
       ],
       "process": [
-        { "step": "Profil & formation", "description": "Sélection des agents selon votre secteur et votre image de marque. Formation aux procédures spécifiques de votre organisation." },
-        { "step": "Accueil des visiteurs", "description": "Gestion des flux entrants, enregistrement, badges, orientation et accompagnement. Interface avec vos équipes internes." },
-        { "step": "Gestion du courrier", "description": "Réception des envois, tri par destinataire, distribution aux services, gestion des colis volumineux et des envois urgents." },
-        { "step": "Coordination et reporting", "description": "Lien entre l'accueil et vos services généraux. Tableau de bord mensuel des flux et des incidents." }
+        {
+          "step": "Profil & formation",
+          "description": "Sélection des agents selon votre secteur et votre image de marque. Formation aux procédures spécifiques de votre organisation."
+        },
+        {
+          "step": "Accueil des visiteurs",
+          "description": "Gestion des flux entrants, enregistrement, badges, orientation et accompagnement. Interface avec vos équipes internes."
+        },
+        {
+          "step": "Gestion du courrier",
+          "description": "Réception des envois, tri par destinataire, distribution aux services, gestion des colis volumineux et des envois urgents."
+        },
+        {
+          "step": "Coordination et reporting",
+          "description": "Lien entre l'accueil et vos services généraux. Tableau de bord mensuel des flux et des incidents."
+        }
       ],
       "kpis": [
-        { "value": "100 %", "label": "visiteurs enregistrés" },
-        { "value": "< 2 min", "label": "temps d'accueil moyen" },
-        { "value": "0", "label": "courrier non tracé" }
+        {
+          "value": "100 %",
+          "label": "visiteurs enregistrés"
+        },
+        {
+          "value": "< 2 min",
+          "label": "temps d'accueil moyen"
+        },
+        {
+          "value": "0",
+          "label": "courrier non tracé"
+        }
       ]
     }
   ],
-
   "aboutPage": {
     "hero": {
       "eyebrow": "À propos",
@@ -375,10 +570,22 @@
       "body2": "Nous opérons avec des processus rigoureux, des outils digitaux avancés et des équipes formées aux normes internationales, pour un service fiable, transparent et mesurable."
     },
     "impacts": [
-      { "value": "- 22 %", "label": "de coûts opérationnels en moyenne" },
-      { "value": "+ 15 %", "label": "de satisfaction des occupants" },
-      { "value": "- 40 %", "label": "de temps d'arrêt non planifiés" },
-      { "value": "100 %", "label": "de conformité réglementaire" }
+      {
+        "value": "- 22 %",
+        "label": "de coûts opérationnels en moyenne"
+      },
+      {
+        "value": "+ 15 %",
+        "label": "de satisfaction des occupants"
+      },
+      {
+        "value": "- 40 %",
+        "label": "de temps d'arrêt non planifiés"
+      },
+      {
+        "value": "100 %",
+        "label": "de conformité réglementaire"
+      }
     ],
     "values": {
       "eyebrow": "Nos valeurs",
@@ -401,10 +608,9 @@
     "teamSection": {
       "eyebrow": "Notre équipe",
       "title": "L'équipe qui transforme vos installations",
-      "subtitle": "Ingénieurs, managers QHSE, experts MEP et spécialistes sécurité : notre équipe cumule plus de 80 ans d'expérience dans le facility management."
+      "subtitle": "Une équipe d'expérience dans le facility management : Ingénieurs, managers QHSE, experts MEP et spécialistes sécurité."
     }
   },
-
   "groupPage": {
     "hero": {
       "eyebrow": "Groupe panafricain pluridisciplinaire",
@@ -469,7 +675,6 @@
       ]
     }
   },
-
   "contactPage": {
     "hero": {
       "eyebrow": "Contact",
@@ -484,7 +689,6 @@
       "hours": "Lun. au Ven. : 8h – 18h\nAstreinte 24/7 pour urgences"
     }
   },
-
   "footer": {
     "tagline": "Moins de contraintes. Plus de performance. Un seul partenaire pour l'ensemble de vos installations.",
     "description": "Partenaire stratégique B2B pour la gestion intégrale de vos installations au Sénégal et en Afrique de l'Ouest.",

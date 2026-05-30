@@ -1,229 +1,171 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight, Clock, CheckCircle } from "lucide-react";
-import { ImageSlot } from "@/components/shared/ImageSlot";
+import { Plus, ArrowRight } from "lucide-react";
+import { HeroCanvas } from "@/components/shared/HeroCanvas";
+import { TypeWriter } from "@/components/ui/TypeWriter";
+import { ShineBorder } from "@/components/ui/ShineBorder";
 import { LogoWatermark } from "@/components/shared/LogoWatermark";
 import contentData from "@/data/content.json";
 
-const { hero, photos, kpis } = contentData;
+const { hero } = contentData;
 
-// Trust indicators shown beneath the CTAs
-const trustItems = [
-  { icon: CheckCircle, text: "Évaluation gratuite sous 24 h" },
-  { icon: CheckCircle, text: "Sans engagement initial" },
-  { icon: Clock, text: "Support 24/7" },
+// Typewriter rotates through services — shows expertise breadth
+const expertiseList = [
+  "la Maintenance Technique",
+  "l'Efficacité Énergétique",
+  "la Sécurité des bâtiments",
+  "les Smart Buildings",
+  "la Gestion d'Actifs",
+  "la Propreté Professionnelle",
+  "le Facility Management intégré",
 ];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-dx-navy-500" style={{ minHeight: "88vh" }}>
+    <section
+      className="relative overflow-hidden bg-dx-navy-500"
+      style={{ minHeight: "92vh", display: "flex", alignItems: "center" }}
+    >
+      {/* Canvas mouse-trail layer */}
+      <HeroCanvas />
 
-      {/* Background dot grid */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(31,104,177,0.1) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
+      {/* Logo watermark */}
+      <LogoWatermark opacity={0.035} position="center-right" scale={1.1} />
 
       {/* Diagonal brand stripes */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div
-          className="dx-stripe absolute"
-          style={{ width: "3px", height: "600px", top: "-80px", right: "36%", opacity: 0.18 }}
-        />
-        <div
-          className="dx-stripe absolute"
-          style={{ width: "2px", height: "500px", top: "-60px", right: "calc(36% + 30px)", opacity: 0.10 }}
-        />
-        <div
-          className="dx-stripe absolute"
-          style={{ width: "4px", height: "400px", top: "-40px", right: "calc(36% - 26px)", opacity: 0.07 }}
-        />
+        <div className="dx-stripe absolute"
+          style={{ width: "3px", height: "600px", top: "-80px", right: "36%", opacity: 0.16 }} />
+        <div className="dx-stripe absolute"
+          style={{ width: "2px", height: "500px", top: "-60px", right: "calc(36% + 30px)", opacity: 0.09 }} />
       </div>
 
-      {/* Radial glow behind image area */}
+      {/* Grid texture */}
+      <div aria-hidden className="hero-grid-bg" />
+
+      {/* Top gradient scrim (from nav) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block"
-        style={{
-          background: "radial-gradient(ellipse at 70% 50%, rgba(31,104,177,0.06) 0%, transparent 70%)",
-        }}
+        className="pointer-events-none absolute top-0 left-0 right-0 h-24"
+        style={{ background: "linear-gradient(to bottom, rgba(19,24,46,0.6), transparent)" }}
       />
 
-      {/* Logo watermark */}
-      <LogoWatermark opacity={0.04} position="center-right" scale={1.1} />
+      {/* Bottom gradient scrim */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-20"
+        style={{ background: "linear-gradient(to top, rgba(19,24,46,0.5), transparent)" }}
+      />
 
-      <div className="dx-container relative z-10 flex flex-col justify-center py-20 lg:py-28"
-        style={{ minHeight: "inherit" }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+      {/* ── Main content — centered ── */}
+      <div className="dx-container relative z-10 py-24 lg:py-32 w-full">
+        <div className="flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
 
-          {/* ── Left column ── */}
-          <div className="flex flex-col gap-6">
+          {/* Availability badge */}
+          <div className="animate-fade-rise flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              borderColor: "rgba(255,255,255,0.1)",
+              color: "rgba(255,255,255,0.65)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            <span className="ping-dot" aria-hidden />
+            <span style={{ color: "#22c55e" }}>Disponible</span>
+            <span className="mx-1 opacity-40">·</span>
+            {hero.eyebrow}
+          </div>
 
-            {/* Eyebrow pill */}
-            <div className="animate-fade-rise">
-              <span className="dx-eyebrow-pill dx-eyebrow-pill--dark">
-                <span className="dot" aria-hidden />
-                {hero.eyebrow}
-              </span>
-            </div>
+          {/* Title box with Plus-corner markers */}
+          <div
+            className="hero-title-box w-full animate-fade-rise anim-delay-75"
+          >
+            {/* Corner markers */}
+            <span aria-hidden className="corner corner-tl">
+              <Plus size={20} strokeWidth={3.5} />
+            </span>
+            <span aria-hidden className="corner corner-tr">
+              <Plus size={20} strokeWidth={3.5} />
+            </span>
+            <span aria-hidden className="corner corner-bl">
+              <Plus size={20} strokeWidth={3.5} />
+            </span>
+            <span aria-hidden className="corner corner-br">
+              <Plus size={20} strokeWidth={3.5} />
+            </span>
 
-            {/* Display headline */}
-            <div className="animate-fade-rise anim-delay-75">
-              <h1
-                className="dx-display text-white leading-none"
-                style={{ fontSize: "clamp(48px, 6vw, 80px)" }}
-              >
-                {hero.title}{" "}
-                <span className="text-dx-blue-300">{hero.titleAccent}</span>
-              </h1>
-            </div>
-
-            {/* Subtitle */}
-            <p
-              className="text-white/70 leading-relaxed max-w-[520px] animate-fade-rise anim-delay-150"
-              style={{ fontSize: "18px" }}
+            {/* H1 */}
+            <h1
+              className="font-display font-bold text-white leading-none"
+              style={{ fontSize: "clamp(38px, 5.5vw, 72px)" }}
             >
-              {hero.subtitle}
-            </p>
+              {hero.title}{" "}
+              <span className="text-dx-blue-300">{hero.titleAccent}</span>
+            </h1>
+          </div>
 
-            {/* Tagline */}
-            <p className="text-dx-blue-300/80 text-sm italic font-medium animate-fade-rise anim-delay-225">
-              {hero.tagline}
+          {/* Typewriter services line */}
+          <div className="animate-fade-rise anim-delay-150 flex items-center gap-2">
+            <p className="text-white/55 text-lg">
+              Experts en{" "}
+              <TypeWriter
+                strings={expertiseList}
+                className="font-semibold text-dx-blue-300"
+              />
             </p>
+          </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 pt-1 animate-fade-rise anim-delay-300">
-              <Link href="/contact" className="btn btn--primary btn--lg flex items-center gap-2">
+          {/* Subtitle */}
+          <p
+            className="animate-fade-rise anim-delay-225 max-w-lg leading-relaxed"
+            style={{ fontSize: "17px", color: "rgba(255,255,255,0.62)" }}
+          >
+            {hero.subtitle}
+          </p>
+
+          {/* CTAs */}
+          <div className="animate-fade-rise anim-delay-300 flex flex-col sm:flex-row items-center gap-3 pt-1">
+            {/* Primary — ShineBorder glow */}
+            <ShineBorder>
+              <Link
+                href="/contact"
+                className="btn btn--primary btn--lg flex items-center gap-2 px-7"
+              >
                 {hero.ctaPrimary}
                 <ArrowRight size={16} strokeWidth={2} />
               </Link>
-              <Link href="/services" className="btn btn--lg"
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.16)",
-                  color: "white",
-                  backdropFilter: "blur(4px)",
-                }}
-              >
-                {hero.ctaSecondary}
-              </Link>
-            </div>
+            </ShineBorder>
 
-            {/* Trust strip */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-2 animate-fade-rise anim-delay-400">
-              {trustItems.map(({ icon: Icon, text }) => (
-                <span key={text} className="flex items-center gap-1.5 text-xs text-white/50">
-                  <Icon size={12} strokeWidth={2} className="text-dx-blue-400 shrink-0" />
-                  {text}
-                </span>
-              ))}
-            </div>
+            {/* Secondary — ghost style */}
+            <Link
+              href="/services"
+              className="btn btn--lg"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                color: "rgba(255,255,255,0.85)",
+                backdropFilter: "blur(4px)",
+              }}
+            >
+              {hero.ctaSecondary}
+            </Link>
           </div>
 
-          {/* ── Right column ── */}
-          <div className="hidden lg:flex flex-col gap-4 animate-fade-left anim-delay-150">
-
-            {/* Image or abstract panel */}
-            {photos.hero ? (
-              <ImageSlot
-                src={photos.hero}
-                alt="Technicien DX Facilities en intervention sur site"
-                aspectRatio="aspect-[4/5]"
-                className="w-full max-w-md mx-auto"
-                priority
-              />
-            ) : (
-              /* Abstract panel when no hero photo */
-              <div className="relative w-full max-w-[420px] mx-auto">
-                {/* KPI grid card */}
-                <div
-                  className="rounded-2xl p-8 border"
-                  style={{
-                    background: "rgba(255,255,255,0.04)",
-                    borderColor: "rgba(255,255,255,0.1)",
-                    backdropFilter: "blur(8px)",
-                  }}
-                >
-                  {/* Card header */}
-                  <div className="flex items-center justify-between mb-8">
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
-                      Indicateurs clés
-                    </p>
-                    <span
-                      className="flex items-center gap-1.5 text-xs font-medium rounded-full px-2.5 py-1"
-                      style={{ background: "rgba(30,142,85,0.15)", color: "#4ade80" }}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80]" aria-hidden />
-                      Opérationnel
-                    </span>
-                  </div>
-
-                  {/* KPI grid */}
-                  <div className="grid grid-cols-2 gap-px"
-                    style={{ background: "rgba(255,255,255,0.08)", borderRadius: "12px", overflow: "hidden" }}>
-                    {kpis.map((kpi, i) => (
-                      <div
-                        key={kpi.label}
-                        className="flex flex-col gap-1 p-5"
-                        style={{ background: "#13182E" }}
-                      >
-                        <div className="font-display font-bold text-white leading-none"
-                          style={{ fontSize: "32px" }}>
-                          {kpi.value}
-                          <span className="text-dx-blue-300 ml-1" style={{ fontSize: "18px" }}>
-                            {kpi.unit}
-                          </span>
-                        </div>
-                        <p className="text-white/45 text-xs mt-1 leading-tight">{kpi.label}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Bottom footer */}
-                  <div className="mt-6 pt-5 border-t flex items-center justify-between"
-                    style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-                    <p className="text-white/35 text-xs">Membre de</p>
-                    <p className="text-white/70 text-xs font-semibold tracking-wider uppercase">
-                      DEXTERA GROUP
-                    </p>
-                  </div>
-                </div>
-
-                {/* Floating badge */}
-                <div
-                  className="absolute -bottom-5 -right-5 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg"
-                  style={{
-                    background: "linear-gradient(135deg, #1F68B1, #155291)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                  }}
-                >
-                  <div className="flex flex-col">
-                    <span className="text-white font-bold text-lg leading-none font-display">8</span>
-                    <span className="text-white/70 text-xs mt-0.5">services</span>
-                  </div>
-                  <div className="w-px h-8 bg-white/20" />
-                  <p className="text-white/80 text-xs leading-tight max-w-[100px]">
-                    domaines d'expertise intégrés
-                  </p>
-                </div>
-              </div>
-            )}
+          {/* Trust strip */}
+          <div
+            className="animate-fade-rise anim-delay-400 flex flex-wrap justify-center items-center gap-6 pt-4"
+            style={{ color: "rgba(255,255,255,0.35)", fontSize: "12px" }}
+          >
+            <span>Évaluation gratuite sous 24 h</span>
+            <span aria-hidden style={{ color: "rgba(255,255,255,0.15)" }}>·</span>
+            <span>Sans engagement initial</span>
+            <span aria-hidden style={{ color: "rgba(255,255,255,0.15)" }}>·</span>
+            <span>Support opérationnel 24/7</span>
           </div>
 
         </div>
       </div>
-
-      {/* Bottom gradient fade to next section */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-16"
-        style={{
-          background: "linear-gradient(to bottom, transparent, rgba(19,24,46,0.4))",
-        }}
-      />
     </section>
   );
 }

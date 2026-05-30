@@ -559,3 +559,92 @@ body {
 .dx-eyebrow-pill--dark .dot {
   background-color: var(--color-dx-blue-300);
 }
+
+/* ── ShineBorder — animated cobalt glow border ───────────────── */
+
+@keyframes shine-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(31,104,177,0.55),
+                0 0 14px rgba(31,104,177,0.18),
+                0 0 28px rgba(31,104,177,0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 1.5px rgba(107,160,220,0.95),
+                0 0 22px rgba(107,160,220,0.35),
+                0 0 48px rgba(107,160,220,0.12);
+  }
+}
+
+.shine-border-outer {
+  animation: shine-glow 2.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ── Hero title box (Plus-corner markers) ───────────────────── */
+
+.hero-title-box {
+  position: relative;
+  padding: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(4px);
+  /* Radial mask — content fades toward edges like designali */
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, #000 60%, transparent 100%);
+}
+
+/* Corner Plus markers */
+.hero-title-box .corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color: rgba(31,104,177,0.6);
+}
+.hero-title-box .corner-tl { top: -10px; left: -10px; }
+.hero-title-box .corner-tr { top: -10px; right: -10px; }
+.hero-title-box .corner-bl { bottom: -10px; left: -10px; }
+.hero-title-box .corner-br { bottom: -10px; right: -10px; }
+
+/* ── Availability ping dot ───────────────────────────────────── */
+
+@keyframes ping-dot {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+.ping-dot {
+  position: relative;
+  display: inline-flex;
+  width: 10px;
+  height: 10px;
+}
+.ping-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: #22c55e;
+  animation: ping-dot 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.ping-dot::after {
+  content: '';
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+
+/* ── Hero grid texture ───────────────────────────────────────── */
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(107,160,220,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(107,160,220,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 40%, transparent 100%);
+  pointer-events: none;
+}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Clock, CheckCircle } from "lucide-react";
 import { ImageSlot } from "@/components/shared/ImageSlot";
+import { LogoWatermark } from "@/components/shared/LogoWatermark";
 import contentData from "@/data/content.json";
 
 const { hero, photos, kpis } = contentData;
@@ -50,6 +51,9 @@ export function Hero() {
           background: "radial-gradient(ellipse at 70% 50%, rgba(31,104,177,0.06) 0%, transparent 70%)",
         }}
       />
+
+      {/* Logo watermark */}
+      <LogoWatermark opacity={0.04} position="center-right" scale={1.1} />
 
       <div className="dx-container relative z-10 flex flex-col justify-center py-20 lg:py-28"
         style={{ minHeight: "inherit" }}>

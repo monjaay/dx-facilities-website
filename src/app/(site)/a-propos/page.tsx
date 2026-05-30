@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { TeamGrid } from "@/components/sections/TeamGrid";
 import { CTABand } from "@/components/sections/CTABand";
+import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/layout/Container";
 import { ImageSlot } from "@/components/shared/ImageSlot";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
@@ -31,27 +32,11 @@ const { aboutPage, photos } = contentData;
 export default function AboutPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="bg-dx-navy-500 relative overflow-hidden py-20 lg:py-24">
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="dx-stripe absolute"
-            style={{ width: "3px", height: "400px", top: "-60px", right: "22%", opacity: 0.16 }} />
-          <div className="dx-stripe absolute"
-            style={{ width: "2px", height: "320px", top: "-40px", right: "calc(22% + 28px)", opacity: 0.08 }} />
-        </div>
-        <Container className="relative z-10">
-          <div className="flex flex-col gap-5 max-w-2xl animate-fade-rise">
-            <span className="dx-eyebrow-pill dx-eyebrow-pill--dark">
-              <span className="dot" aria-hidden />
-              {aboutPage.hero.eyebrow}
-            </span>
-            <h1 className="dx-h1 text-white">{aboutPage.hero.title}</h1>
-            <p className="dx-lead" style={{ color: "rgba(255,255,255,0.65)" }}>
-              {aboutPage.hero.subtitle}
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow={aboutPage.hero.eyebrow}
+        title={aboutPage.hero.title}
+        subtitle={aboutPage.hero.subtitle}
+      />
 
       {/* Mission section */}
       <section className="dx-section" style={{ backgroundColor: "#080c18" }}>

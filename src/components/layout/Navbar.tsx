@@ -57,7 +57,7 @@ export function Navbar() {
               alt="DX Facilities"
               width={870}
               height={739}
-              style={{ height: 36, width: "auto" }}
+              style={{ height: 48, width: "auto" }}
               priority
             />
           </Link>

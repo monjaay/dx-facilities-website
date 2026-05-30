@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
+import { LogoWatermark } from "@/components/shared/LogoWatermark";
 import contentData from "@/data/content.json";
 
 const { ctaBand } = contentData;
@@ -21,6 +22,9 @@ export function CTABand() {
           style={{ width: "2px", height: "400px", top: "-60px", right: "calc(24% + 30px)", opacity: 0.08 }}
         />
       </div>
+
+      {/* Logo watermark */}
+      <LogoWatermark opacity={0.06} position="bottom-right" scale={0.8} />
 
       {/* Fine dot grid */}
       <div

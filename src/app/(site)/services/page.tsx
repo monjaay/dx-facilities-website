@@ -3,6 +3,7 @@ import { services } from "@/data/services";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { Container } from "@/components/layout/Container";
 import { CTABand } from "@/components/sections/CTABand";
+import { PageHero } from "@/components/shared/PageHero";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
 import contentData from "@/data/content.json";
 
@@ -41,28 +42,11 @@ const { servicesPage } = contentData;
 export default function ServicesPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="bg-dx-navy-500 relative overflow-hidden py-20 lg:py-24">
-        {/* Diagonal stripes */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="dx-stripe absolute"
-            style={{ width: "3px", height: "400px", top: "-60px", right: "20%", opacity: 0.16 }} />
-          <div className="dx-stripe absolute"
-            style={{ width: "2px", height: "320px", top: "-40px", right: "calc(20% + 28px)", opacity: 0.08 }} />
-        </div>
-        <Container className="relative z-10">
-          <div className="flex flex-col gap-5 max-w-2xl animate-fade-rise">
-            <span className="dx-eyebrow-pill dx-eyebrow-pill--dark">
-              <span className="dot" aria-hidden />
-              {servicesPage.hero.eyebrow}
-            </span>
-            <h1 className="dx-h1 text-white">{servicesPage.hero.title}</h1>
-            <p className="dx-lead" style={{ color: "rgba(255,255,255,0.65)" }}>
-              {servicesPage.hero.subtitle}
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow={servicesPage.hero.eyebrow}
+        title={servicesPage.hero.title}
+        subtitle={servicesPage.hero.subtitle}
+      />
 
       {/* Service categories */}
       {categories.map((category) => {

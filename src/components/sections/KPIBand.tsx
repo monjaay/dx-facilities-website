@@ -1,6 +1,7 @@
 import { kpis } from "@/data/kpis";
 import { Container } from "@/components/layout/Container";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
+import { LogoWatermark } from "@/components/shared/LogoWatermark";
 
 export function KPIBand() {
   return (
@@ -17,6 +18,9 @@ export function KPIBand() {
           style={{ width: "2px", height: "300px", top: "-40px", right: "calc(18% + 26px)", opacity: 0.07 }}
         />
       </div>
+
+      {/* Logo watermark */}
+      <LogoWatermark opacity={0.035} position="center" scale={0.9} />
 
       {/* Subtle top cobalt line */}
       <div

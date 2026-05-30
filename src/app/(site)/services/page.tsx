@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
 import { CTABand } from "@/components/sections/CTABand";
+import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
 import contentData from "@/data/content.json";
 
 export const metadata: Metadata = {
@@ -41,30 +41,51 @@ const { servicesPage } = contentData;
 export default function ServicesPage() {
   return (
     <>
-      <section className="bg-dx-navy-500 py-16 lg:py-20">
-        <Container>
-          <div className="flex flex-col gap-4 max-w-2xl">
-            <Eyebrow>{servicesPage.hero.eyebrow}</Eyebrow>
+      {/* Page hero */}
+      <section className="bg-dx-navy-500 relative overflow-hidden py-20 lg:py-24">
+        {/* Diagonal stripes */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="dx-stripe absolute"
+            style={{ width: "3px", height: "400px", top: "-60px", right: "20%", opacity: 0.16 }} />
+          <div className="dx-stripe absolute"
+            style={{ width: "2px", height: "320px", top: "-40px", right: "calc(20% + 28px)", opacity: 0.08 }} />
+        </div>
+        <Container className="relative z-10">
+          <div className="flex flex-col gap-5 max-w-2xl animate-fade-rise">
+            <span className="dx-eyebrow-pill dx-eyebrow-pill--dark">
+              <span className="dot" aria-hidden />
+              {servicesPage.hero.eyebrow}
+            </span>
             <h1 className="dx-h1 text-white">{servicesPage.hero.title}</h1>
-            <p className="dx-lead text-white/70 max-w-xl">{servicesPage.hero.subtitle}</p>
+            <p className="dx-lead" style={{ color: "rgba(255,255,255,0.65)" }}>
+              {servicesPage.hero.subtitle}
+            </p>
           </div>
         </Container>
       </section>
 
-      {categories.map((category, idx) => {
+      {/* Service categories */}
+      {categories.map((category) => {
         const categoryServices = services.filter((s) => s.category === category);
         if (categoryServices.length === 0) return null;
-        const bg = idx % 2 === 0 ? "bg-[#090d1a]" : "bg-dx-navy-500";
         return (
-          <section key={category} className={`dx-section ${bg} border-t border-white/10`}>
+          <section
+            key={category}
+            className="dx-section bg-dx-navy-500 border-t"
+            style={{ borderColor: "rgba(255,255,255,0.07)" }}
+          >
             <Container>
               <div className="flex flex-col gap-8">
-                <div className="flex flex-col gap-2">
-                  <Eyebrow>{category}</Eyebrow>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
-                  {categoryServices.map((service) => (
-                    <ServiceCard key={service.slug} service={service} />
+                <RevealOnScroll>
+                  <div className="dx-eyebrow" style={{ color: "rgba(107,160,220,0.8)" }}>
+                    {category}
+                  </div>
+                </RevealOnScroll>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                  {categoryServices.map((service, i) => (
+                    <RevealOnScroll key={service.slug} delay={i * 60}>
+                      <ServiceCard service={service} variant="dark" />
+                    </RevealOnScroll>
                   ))}
                 </div>
               </div>
@@ -73,24 +94,41 @@ export default function ServicesPage() {
         );
       })}
 
-      <section className="dx-section bg-dx-blue-500">
-        <Container>
+      {/* Results band */}
+      <section className="dx-section bg-dx-blue-500 relative overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <Container className="relative z-10">
           <div className="flex flex-col gap-10">
-            <div className="flex flex-col gap-3 max-w-xl">
-              <Eyebrow>{servicesPage.results.eyebrow}</Eyebrow>
-              <h2 className="dx-h2 text-white">{servicesPage.results.title}</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {servicesPage.results.items.map((result) => (
-                <div
-                  key={result.label}
-                  className="flex flex-col gap-2 rounded-lg bg-white/10 p-6 border border-white/15"
-                >
-                  <span className="font-display font-bold text-5xl text-white leading-tight">
-                    {result.value}
-                  </span>
-                  <span className="dx-body text-white/75">{result.label}</span>
+            <RevealOnScroll>
+              <div className="flex flex-col gap-3 max-w-xl">
+                <div className="dx-eyebrow" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  {servicesPage.results.eyebrow}
                 </div>
+                <h2 className="dx-h2 text-white">{servicesPage.results.title}</h2>
+              </div>
+            </RevealOnScroll>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {servicesPage.results.items.map((result, i) => (
+                <RevealOnScroll key={result.label} delay={i * 80}>
+                  <div
+                    className="flex flex-col gap-2 rounded-xl p-7 border"
+                    style={{ background: "rgba(255,255,255,0.1)", borderColor: "rgba(255,255,255,0.15)" }}
+                  >
+                    <span className="kpi-number text-white leading-tight" style={{ fontSize: "48px" }}>
+                      {result.value}
+                    </span>
+                    <span className="dx-body" style={{ color: "rgba(255,255,255,0.75)" }}>
+                      {result.label}
+                    </span>
+                  </div>
+                </RevealOnScroll>
               ))}
             </div>
           </div>

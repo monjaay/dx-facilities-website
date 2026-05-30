@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 
-// Logo dimensions: 870 × 739 px (aspect ratio 1.177 : 1 — nearly square)
+// Logo dimensions: 870 × 739 px (aspect ratio ~1.18 : 1)
 const LOGO_URL =
   "https://res.cloudinary.com/dcubjimoc/image/upload/v1777295664/LOGO_DX_FACILITIES_yc8fuq.png";
 
@@ -18,135 +18,189 @@ const navLinks = [
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  // Detect scroll to add shadow / more opaque bg
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 12);
+    handler();
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
 
   return (
     <>
-      {/* Header — height auto, driven by logo size + padding */}
-      <header className="sticky top-0 z-50 border-b border-dx-steel-100 bg-white/85 backdrop-blur-md">
-        <div className="dx-container flex h-full items-center justify-between py-3">
+      <header
+        className={[
+          "sticky top-0 z-50 transition-all duration-180",
+          scrolled
+            ? "bg-white/95 backdrop-blur-md border-b border-dx-steel-100 shadow-sm"
+            : "bg-white/85 backdrop-blur-md border-b border-dx-steel-100/60",
+        ].join(" ")}
+        style={{ transition: "background-color 200ms, box-shadow 200ms" }}
+      >
+        <div className="dx-container flex h-[68px] items-center justify-between">
 
+          {/* Logo */}
           <Link href="/" className="shrink-0" aria-label="DX Facilities, accueil">
-            {/* True intrinsic: 870 × 739. Display at 88 px height → ~104 px wide */}
             <Image
               src={LOGO_URL}
               alt="DX Facilities"
               width={870}
               height={739}
-              style={{ height: 88, width: "auto" }}
+              style={{ height: 36, width: "auto" }}
               priority
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8" aria-label="Navigation principale">
+          {/* Desktop nav */}
+          <nav
+            className="hidden lg:flex items-center gap-1"
+            aria-label="Navigation principale"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={[
-                  "font-sans text-sm font-medium transition-colors duration-120 ease-standard relative pb-0.5",
+                  "relative px-4 py-2 rounded-md text-sm font-medium transition-all duration-120 ease-standard",
                   isActive(link.href)
-                    ? "text-dx-blue-500 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-dx-blue-500 after:rounded-full"
-                    : "text-dx-navy-700 hover:text-dx-blue-700",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
+                    ? "text-dx-blue-500 bg-dx-blue-50"
+                    : "text-dx-navy-700 hover:text-dx-blue-600 hover:bg-dx-steel-50",
+                ].join(" ")}
               >
                 {link.label}
+                {isActive(link.href) && (
+                  <span
+                    aria-hidden
+                    className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-dx-blue-500"
+                  />
+                )}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Link href="/contact" className="btn btn--secondary text-sm">
-              Nous contacter
+          {/* Desktop CTAs */}
+          <div className="hidden lg:flex items-center gap-2.5">
+            <Link
+              href="/contact"
+              className="btn btn--ghost text-sm px-4 py-2"
+            >
+              Contact
             </Link>
-            <Link href="/contact" className="btn btn--primary text-sm">
-              Demander une évaluation
+            <Link href="/contact" className="btn btn--primary text-sm px-4 py-2">
+              Évaluation gratuite
             </Link>
           </div>
 
+          {/* Mobile hamburger */}
           <button
-            className="flex lg:hidden items-center justify-center w-10 h-10 text-dx-navy-700"
+            className="flex lg:hidden items-center justify-center w-10 h-10 rounded-lg text-dx-navy-700 hover:bg-dx-steel-50 transition-colors"
             onClick={() => setMenuOpen(true)}
             aria-label="Ouvrir le menu"
             aria-expanded={menuOpen}
           >
-            <Menu size={24} strokeWidth={1.75} />
+            <Menu size={22} strokeWidth={1.75} />
           </button>
         </div>
       </header>
 
-      {/* Mobile slide-in menu */}
-      {menuOpen && (
+      {/* Mobile overlay + slide-in panel */}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu de navigation"
+        className={[
+          "fixed inset-0 z-50 lg:hidden transition-all duration-240",
+          menuOpen ? "pointer-events-auto" : "pointer-events-none",
+        ].join(" ")}
+      >
+        {/* Backdrop */}
         <div
-          className="fixed inset-0 z-50 lg:hidden"
+          aria-hidden
+          className={[
+            "absolute inset-0 bg-dx-navy-700/60 backdrop-blur-sm transition-opacity duration-240",
+            menuOpen ? "opacity-100" : "opacity-0",
+          ].join(" ")}
           onClick={() => setMenuOpen(false)}
+        />
+
+        {/* Panel */}
+        <nav
+          className={[
+            "absolute right-0 top-0 bottom-0 w-[320px] max-w-[90vw] bg-dx-navy-500 flex flex-col",
+            "transition-transform duration-240 ease-standard",
+            menuOpen ? "translate-x-0" : "translate-x-full",
+          ].join(" ")}
+          aria-label="Menu mobile"
         >
-          <div className="absolute inset-0 bg-dx-navy-700/50" aria-hidden="true" />
-          <nav
-            className="absolute right-0 top-0 bottom-0 w-80 max-w-full bg-dx-navy-500 px-6 py-8 flex flex-col gap-8"
-            onClick={(e) => e.stopPropagation()}
-            aria-label="Menu mobile"
-          >
-            <div className="flex items-center justify-between">
-              {/* Mobile logo: 60 px height */}
-              <Image
-                src={LOGO_URL}
-                alt="DX Facilities"
-                width={870}
-                height={739}
-                style={{ height: 60, width: "auto" }}
-              />
-              <button
-                className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Fermer le menu"
-              >
-                <X size={24} strokeWidth={1.75} />
-              </button>
-            </div>
+          {/* Panel header */}
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+            <Image
+              src={LOGO_URL}
+              alt="DX Facilities"
+              width={870}
+              height={739}
+              style={{ height: 32, width: "auto" }}
+              className="brightness-0 invert opacity-90"
+            />
+            <button
+              className="flex items-center justify-center w-9 h-9 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Fermer le menu"
+            >
+              <X size={20} strokeWidth={1.75} />
+            </button>
+          </div>
 
-            <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={[
-                    "font-sans text-base font-medium py-3 border-b border-white/10 transition-colors duration-120",
-                    isActive(link.href)
-                      ? "text-dx-blue-300"
-                      : "text-white/80 hover:text-white",
-                  ].join(" ")}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+          {/* Nav links */}
+          <div className="flex flex-col px-4 py-4 flex-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={[
+                  "flex items-center justify-between px-3 py-3.5 rounded-lg text-base font-medium transition-all duration-120",
+                  isActive(link.href)
+                    ? "text-dx-blue-300 bg-white/[0.07]"
+                    : "text-white/75 hover:text-white hover:bg-white/[0.06]",
+                ].join(" ")}
+              >
+                {link.label}
+                <ChevronRight size={16} strokeWidth={1.75} className="opacity-40" />
+              </Link>
+            ))}
+          </div>
 
-            <div className="flex flex-col gap-3 mt-auto">
-              <Link
-                href="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="btn btn--inverse w-full justify-center"
-              >
-                Nous contacter
-              </Link>
-              <Link
-                href="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="btn btn--primary w-full justify-center"
-              >
-                Demander une évaluation
-              </Link>
-            </div>
-          </nav>
-        </div>
-      )}
+          {/* Panel CTAs */}
+          <div className="flex flex-col gap-2.5 px-4 py-6 border-t border-white/10">
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="btn btn--inverse w-full justify-center"
+            >
+              Nous contacter
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="btn btn--primary w-full justify-center"
+            >
+              Évaluation gratuite
+            </Link>
+          </div>
+        </nav>
+      </div>
     </>
   );
 }

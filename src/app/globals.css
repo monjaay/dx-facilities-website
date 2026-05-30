@@ -363,18 +363,135 @@ body {
 /* ── Scroll animation ─────────────────────────────────────────── */
 
 @keyframes fade-rise {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-rise {
-  animation: fade-rise 360ms cubic-bezier(0.2, 0, 0, 1) both;
+@keyframes fade-right {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-left {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes line-grow-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes number-count {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-rise  { animation: fade-rise  360ms cubic-bezier(0.2, 0, 0, 1) both; }
+.animate-fade-right { animation: fade-right 400ms cubic-bezier(0.2, 0, 0, 1) both; }
+.animate-fade-left  { animation: fade-left  400ms cubic-bezier(0.2, 0, 0, 1) both; }
+.animate-scale-in   { animation: scale-in   360ms cubic-bezier(0.2, 0, 0, 1) both; }
+
+/* Stagger delays for sequence animation */
+.anim-delay-75  { animation-delay: 75ms; }
+.anim-delay-150 { animation-delay: 150ms; }
+.anim-delay-225 { animation-delay: 225ms; }
+.anim-delay-300 { animation-delay: 300ms; }
+.anim-delay-400 { animation-delay: 400ms; }
+.anim-delay-500 { animation-delay: 500ms; }
+.anim-delay-600 { animation-delay: 600ms; }
+
+/* ── Scroll reveal ────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 480ms cubic-bezier(0.2, 0, 0, 1),
+              transform 480ms cubic-bezier(0.2, 0, 0, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 480ms cubic-bezier(0.2, 0, 0, 1),
+              transform 480ms cubic-bezier(0.2, 0, 0, 1);
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity 480ms cubic-bezier(0.2, 0, 0, 1),
+              transform 480ms cubic-bezier(0.2, 0, 0, 1);
+}
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Underline hover link animation ──────────────────────────── */
+
+.dx-link-underline {
+  position: relative;
+  display: inline-block;
+}
+.dx-link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.dx-link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Cobalt top accent on card hover ─────────────────────────── */
+
+.dx-card-hover {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 200ms cubic-bezier(0.2, 0, 0, 1),
+              transform 200ms cubic-bezier(0.2, 0, 0, 1),
+              border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.dx-card-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-dx-blue-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms cubic-bezier(0.2, 0, 0, 1);
+}
+.dx-card-hover:hover::before {
+  transform: scaleX(1);
+}
+.dx-card-hover:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: var(--color-dx-steel-200) !important;
 }
 
 /* ── Diagonal stripe motif ────────────────────────────────────── */
@@ -385,4 +502,60 @@ body {
   pointer-events: none;
   transform: rotate(-50deg);
   transform-origin: center;
+}
+
+/* ── Dot grid texture ─────────────────────────────────────────── */
+.dx-dot-grid {
+  background-image: radial-gradient(circle, rgba(31, 104, 177, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ── Section separator line ──────────────────────────────────── */
+.dx-section-line {
+  width: 48px;
+  height: 2px;
+  background-color: var(--color-dx-blue-500);
+  transform-origin: left;
+}
+
+/* ── Number counter display ──────────────────────────────────── */
+.kpi-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* ── Eyebrow pill variant ─────────────────────────────────────── */
+.dx-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px 12px 4px 4px;
+  background-color: rgba(31, 104, 177, 0.1);
+  border: 1px solid rgba(31, 104, 177, 0.25);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-dx-blue-400);
+}
+.dx-eyebrow-pill .dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-dx-blue-500);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Dark surface eyebrow pill */
+.dx-eyebrow-pill--dark {
+  background-color: rgba(107, 160, 220, 0.12);
+  border-color: rgba(107, 160, 220, 0.25);
+  color: var(--color-dx-blue-300);
+}
+.dx-eyebrow-pill--dark .dot {
+  background-color: var(--color-dx-blue-300);
 }

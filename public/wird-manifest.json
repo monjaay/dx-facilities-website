@@ -1,0 +1,10 @@
+{
+  "name": "Wird Tidjaniya",
+  "short_name": "Wird",
+  "description": "Outil de pratique pour la Tariqa Tidjaniya",
+  "start_url": "/wird",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#10b981",
+  "orientation": "portrait"
+}

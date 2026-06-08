@@ -48,7 +48,7 @@ export function Navbar() {
         ].join(" ")}
         style={{ transition: "background-color 200ms, box-shadow 200ms" }}
       >
-        <div className="dx-container flex h-[68px] items-center justify-between">
+        <div className="dx-container flex h-[80px] items-center justify-between">
 
           {/* Logo */}
           <Link href="/" className="shrink-0" aria-label="DX Facilities, accueil">
@@ -57,7 +57,7 @@ export function Navbar() {
               alt="DX Facilities"
               width={870}
               height={739}
-              style={{ height: 48, width: "auto" }}
+              style={{ height: 72, width: "auto" }}
               priority
             />
           </Link>

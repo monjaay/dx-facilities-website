@@ -46,7 +46,7 @@ const subsidiaries: Subsidiary[] = [
   },
   {
     name: "DX Facilities",
-    slogan: "Helping you to focus and optimizing your resources!",
+    slogan: "Helping you focus and optimize your resources!",
     description:
       "Facility management intégral : maintenance technique, gestion d'actifs, smart buildings, efficacité énergétique, sécurité, propreté et accueil.",
     logo: "https://res.cloudinary.com/dcubjimoc/image/upload/v1777295664/LOGO_DX_FACILITIES_yc8fuq.png",

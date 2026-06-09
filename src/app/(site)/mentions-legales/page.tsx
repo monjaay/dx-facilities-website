@@ -27,19 +27,17 @@ export default function MentionsLegalesPage() {
                   <br />
                   Filiale de DEXTERA GROUP
                   <br />
-                  Rte de l'aéroport, lot N°88106, Yoff ONOMO, Dakar — Sénégal
-                  <br />
-                  Téléphone : +221 33 843 14 64
+                  Dakar, Sénégal
                   <br />
                   Email : info@dxfacilities.com
                 </p>
               ),
             },
             {
-              title: "Directeur de la publication",
+              title: "Responsable de la publication",
               content: (
                 <p className="dx-body text-dx-steel-600">
-                  Mamadou Ndiaye, CEO DX Facilities
+                  DX Facilities — contact : info@dxfacilities.com
                 </p>
               ),
             },
@@ -47,8 +45,7 @@ export default function MentionsLegalesPage() {
               title: "Hébergement",
               content: (
                 <p className="dx-body text-dx-steel-600">
-                  Ce site est hébergé par Vercel Inc., 340 Pine Street, Suite
-                  900, San Francisco, CA 94104, États-Unis.
+                  Ce site est hébergé par Vercel Inc., États-Unis.
                 </p>
               ),
             },
@@ -69,12 +66,12 @@ export default function MentionsLegalesPage() {
               content: (
                 <p className="dx-body text-dx-steel-600">
                   Les informations collectées via le formulaire de contact sont
-                  utilisées exclusivement pour traiter votre demande et vous
-                  recontacter. Elles ne sont ni cédées, ni vendues à des tiers.
-                  Conformément à la loi sénégalaise n° 2008-12 sur la
-                  protection des données à caractère personnel, vous disposez
-                  d'un droit d'accès, de rectification et de suppression de vos
-                  données en nous contactant à info@dxfacilities.com.
+                  utilisées exclusivement pour traiter votre demande. Elles ne
+                  sont ni cédées ni vendues à des tiers. Conformément à la loi
+                  sénégalaise n° 2008-12 sur la protection des données
+                  personnelles, vous disposez d'un droit d'accès, de
+                  rectification et de suppression en écrivant à
+                  info@dxfacilities.com.
                 </p>
               ),
             },

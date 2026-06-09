@@ -10,6 +10,7 @@ type FormState = {
   phone: string;
   service: string;
   message: string;
+  consent: boolean;
 };
 
 const initialState: FormState = {
@@ -19,6 +20,7 @@ const initialState: FormState = {
   phone: "",
   service: "",
   message: "",
+  consent: false,
 };
 
 export function ContactForm() {
@@ -32,7 +34,12 @@ export function ContactForm() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value, type } = e.target;
+    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -195,16 +202,43 @@ export function ContactForm() {
         />
       </div>
 
+      {/* CDP consent — required by Sénégal data protection law */}
+      <div className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-4">
+        <input
+          id="consent"
+          name="consent"
+          type="checkbox"
+          required
+          checked={form.consent}
+          onChange={handleChange}
+          className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border border-white/25 bg-white/10 accent-dx-blue-500 focus:outline-none focus:ring-2 focus:ring-dx-blue-400 focus:ring-offset-0"
+          aria-describedby="consent-desc"
+        />
+        <label htmlFor="consent" id="consent-desc" className="text-xs leading-relaxed text-white/60 cursor-pointer">
+          J'accepte que mes données personnelles (nom, entreprise, email, téléphone) soient collectées et traitées par DX Facilities dans le seul but de répondre à ma demande, conformément à la loi n° 2008-12 sur la protection des données personnelles au Sénégal et aux directives de la{" "}
+          <abbr title="Commission de Protection des Données Personnelles">CDP</abbr>.{" "}
+          <a
+            href="/mentions-legales"
+            className="underline text-white/75 hover:text-white transition-colors duration-120"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mentions légales
+          </a>
+          <span className="text-red-400 ml-1" aria-hidden="true">*</span>
+        </label>
+      </div>
+
       {error && (
-        <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-3">
+        <p role="alert" className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-3">
           {error}
         </p>
       )}
 
       <button
         type="submit"
-        disabled={loading}
-        className="btn btn--primary btn--lg self-start disabled:opacity-60 disabled:cursor-not-allowed"
+        disabled={loading || !form.consent}
+        className="btn btn--primary btn--lg self-start disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? "Envoi en cours…" : "Envoyer votre demande"}
       </button>

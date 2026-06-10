@@ -635,6 +635,127 @@ body {
   background-color: #22c55e;
 }
 
+/* ── Services numbered cards (dark homepage section) ─────────── */
+
+.services-grid-dark {
+  background-color: #060b16;
+}
+
+/* Subtle dot-grid texture on dark services section */
+.services-grid-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(107,160,220,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(107,160,220,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 50%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 100% 80% at 50% 50%, #000 40%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Individual service card */
+.service-numbered-card {
+  background-color: rgba(255,255,255,0.025);
+  transition:
+    background-color 220ms cubic-bezier(0.2, 0, 0, 1),
+    transform        220ms cubic-bezier(0.2, 0, 0, 1);
+}
+.service-numbered-card:hover {
+  background-color: rgba(31,104,177,0.07);
+  transform: translateY(-2px);
+}
+
+/* Ghost ordinal number */
+.service-card-ordinal {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(56px, 5vw, 80px);
+  color: rgba(31,104,177,0.06);
+  transition: color 280ms cubic-bezier(0.2, 0, 0, 1),
+              transform 280ms cubic-bezier(0.2, 0, 0, 1);
+}
+.service-numbered-card:hover .service-card-ordinal {
+  color: rgba(31,104,177,0.15);
+  transform: scale(1.06) translateY(-4px);
+}
+
+/* Top cobalt bar */
+.service-card-topbar {
+  background: linear-gradient(
+    to right,
+    var(--color-dx-blue-500),
+    var(--color-dx-blue-300)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1);
+  border-radius: 0;
+}
+.service-numbered-card:hover .service-card-topbar {
+  transform: scaleX(1);
+}
+
+/* Icon */
+.service-card-icon {
+  background: rgba(31,104,177,0.1);
+  border: 1px solid rgba(31,104,177,0.2);
+  color: var(--color-dx-blue-300);
+  transition:
+    background  200ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 200ms cubic-bezier(0.2, 0, 0, 1),
+    color       200ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow  200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.service-numbered-card:hover .service-card-icon {
+  background: rgba(31,104,177,0.2);
+  border-color: rgba(31,104,177,0.45);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(31,104,177,0.25);
+}
+
+/* Title */
+.service-card-title {
+  transition: color 180ms cubic-bezier(0.2, 0, 0, 1);
+}
+.service-numbered-card:hover .service-card-title {
+  color: var(--color-dx-blue-200);
+}
+
+/* Description */
+.service-card-desc {
+  color: rgba(255,255,255,0.45);
+  transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.service-numbered-card:hover .service-card-desc {
+  color: rgba(255,255,255,0.65);
+}
+
+/* CTA — hidden by default, slides up on hover */
+.service-card-cta {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity   220ms cubic-bezier(0.2, 0, 0, 1),
+    transform 220ms cubic-bezier(0.2, 0, 0, 1);
+}
+.service-numbered-card:hover .service-card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card entrance stagger — applied via RevealOnScroll delay */
+@keyframes service-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ── Hero grid texture ───────────────────────────────────────── */
 
 .hero-grid-bg {

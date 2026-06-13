@@ -75,7 +75,7 @@
   },
   "ctaBand": {
     "title": "Transformez vos installations en avantage compétitif",
-    "subtitle": "Rejoignez les entreprises qui ont réduit leurs coûts opérationnels de 22 % dès la première année de partenariat.",
+    "subtitle": "Vos installations ont le potentiel de réduire leurs coûts opérationnels jusqu'à 22 % dès la première année de contrat.",
     "ctaPrimary": "Obtenir une évaluation gratuite",
     "ctaSecondary": "Découvrir nos services"
   },
@@ -108,25 +108,25 @@
     ]
   },
   "caseStudy": {
-    "eyebrow": "Étude de cas",
-    "title": "Réduction de 22 % des coûts opérationnels pour un complexe de bureaux de 15 000 m²",
-    "body": "En déployant une stratégie de maintenance prédictive couplée à un système de monitoring énergétique, DX Facilities a permis à ce client de réduire ses coûts opérationnels de 22 % en 18 mois, tout en maintenant un taux de disponibilité de 99,4 %.",
+    "eyebrow": "Scénario de référence · Bâtiment tertiaire",
+    "title": "Optimisation d'un immeuble de bureaux de 3 200 m² : projection sur 12 mois",
+    "body": "Ce scénario de référence illustre le potentiel d'optimisation d'un déploiement type sur un immeuble tertiaire de taille intermédiaire. En combinant maintenance prédictive et monitoring énergétique, ce type de configuration permet de viser une réduction des charges d'exploitation de l'ordre de 20 à 25 %, tout en atteignant un taux de disponibilité supérieur à 99 %.",
     "stats": [
       {
         "value": "- 22 %",
-        "label": "coûts opérationnels"
+        "label": "objectif coûts opérationnels"
       },
       {
-        "value": "99,4 %",
-        "label": "disponibilité"
+        "value": "99,2 %",
+        "label": "disponibilité cible"
       },
       {
-        "value": "18 mois",
-        "label": "durée de déploiement"
+        "value": "12 mois",
+        "label": "durée de déploiement type"
       }
     ],
-    "quote": "DX Facilities a transformé notre gestion des installations. Nous avons enfin une visibilité complète sur notre patrimoine technique.",
-    "quoteCite": "Directeur des opérations, groupe immobilier dakarois"
+    "quote": "Ce que nous recherchons, c'est un partenaire qui comprend nos contraintes opérationnelles et qui engage sa responsabilité sur des indicateurs mesurables.",
+    "quoteCite": "Directeur des opérations, groupe tertiaire dakarois"
   },
   "servicesPage": {
     "hero": {
@@ -135,20 +135,20 @@
       "subtitle": "Cinq domaines d'expertise, huit services opérationnels : DX Facilities couvre l'intégralité du cycle de vie de vos bâtiments, de la maintenance préventive à la gestion intelligente des actifs."
     },
     "results": {
-      "eyebrow": "Résultats clients",
-      "title": "Des gains mesurables, dès les premiers mois",
+      "eyebrow": "Objectifs de performance",
+      "title": "Des engagements mesurables, définis contractuellement",
       "items": [
         {
           "value": "- 22 %",
-          "label": "de coûts opérationnels en moyenne dès la 1re année"
+          "label": "de réduction des coûts opérationnels visée dès la 1re année de contrat"
         },
         {
           "value": "- 40 %",
-          "label": "de temps d'arrêt non planifiés grâce à la maintenance prédictive"
+          "label": "de réduction des arrêts non planifiés, grâce à la maintenance prédictive"
         },
         {
           "value": "+ 15 %",
-          "label": "de satisfaction des occupants mesurée sur 12 mois"
+          "label": "d'amélioration de la satisfaction des occupants sur 12 mois"
         }
       ]
     }
@@ -162,7 +162,7 @@
       "description": "Préventive, corrective, multi-technique : vos équipements maintenus au plus haut niveau de performance.",
       "tagline": "Zéro panne non anticipée. Zéro surprise.",
       "intro": "Chaque jour d'arrêt non planifié coûte de l'argent et nuit à votre réputation. DX Facilities met en œuvre un programme de maintenance structuré, couvrant l'ensemble de vos lots techniques pour garantir la disponibilité permanente de vos installations.",
-      "details": "Notre approche couvre l'électricité, la climatisation, la plomberie et la structure du bâtiment. Chaque intervention est consignée dans notre logiciel CMMS, accessible à tout moment via un tableau de bord client. Nous intervenons en mode préventif pour anticiper les défaillances, et en mode correctif avec des délais de réponse garantis contractuellement. Résultat : un taux de disponibilité supérieur à 99% et des équipes métier qui travaillent sans interruption.",
+      "details": "Notre approche couvre l'électricité, la climatisation, la plomberie et la structure du bâtiment. Chaque intervention est consignée dans notre logiciel CMMS, accessible à tout moment via un tableau de bord client. Nous intervenons en mode préventif pour anticiper les défaillances, et en mode correctif avec des délais de réponse garantis contractuellement. Objectif contractuel : un taux de disponibilité supérieur à 99% et des équipes métier qui travaillent sans interruption.",
       "features": [
         "Maintenance préventive planifiée selon les préconisations constructeurs",
         "Maintenance corrective avec délai d'intervention garanti",
@@ -346,11 +346,11 @@
         },
         {
           "value": "+ 30 %",
-          "label": "de durée de vie équipements"
+          "label": "de durée de vie équipements (objectif moyen)"
         },
         {
-          "value": "0",
-          "label": "arrêt de production non anticipé"
+          "value": "< 5",
+          "label": "pannes non détectées en amont par an (objectif)"
         }
       ]
     },
@@ -392,7 +392,7 @@
       "kpis": [
         {
           "value": "- 18 %",
-          "label": "de consommation en moyenne"
+          "label": "de consommation énergétique visée"
         },
         {
           "value": "12 mois",
@@ -500,7 +500,7 @@
         },
         {
           "value": "0",
-          "label": "non-conformité en audit"
+          "label": "non-conformité tolérée (exigence qualité)"
         }
       ]
     },
@@ -570,19 +570,19 @@
     "impacts": [
       {
         "value": "- 22 %",
-        "label": "de coûts opérationnels en moyenne"
+        "label": "de réduction des coûts opérationnels (objectif contractuel)"
       },
       {
         "value": "+ 15 %",
-        "label": "de satisfaction des occupants"
+        "label": "d'amélioration de la satisfaction des occupants"
       },
       {
         "value": "- 40 %",
-        "label": "de temps d'arrêt non planifiés"
+        "label": "de réduction des arrêts non planifiés"
       },
       {
         "value": "100 %",
-        "label": "de conformité réglementaire"
+        "label": "de conformité réglementaire visée"
       }
     ],
     "values": {

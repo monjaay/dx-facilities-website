@@ -2,18 +2,19 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-type RevealVariant = "up" | "left" | "right";
+type RevealVariant = "up" | "left" | "right" | "clip";
 
 const variantClass: Record<RevealVariant, string> = {
   up: "reveal",
   left: "reveal-left",
   right: "reveal-right",
+  clip: "reveal-clip",
 };
 
 type Props = {
   children: ReactNode;
   className?: string;
-  delay?: number; // ms
+  delay?: number;
   variant?: RevealVariant;
   threshold?: number;
 };

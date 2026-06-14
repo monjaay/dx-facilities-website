@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -19,11 +19,20 @@ const navLinks = [
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const progressRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Detect scroll to add shadow / more opaque bg
+  // Scroll state + progress bar (DOM ref = no re-render per frame)
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 12);
+    const handler = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressRef.current) {
+        progressRef.current.style.width =
+          total > 0 ? `${Math.min((y / total) * 100, 100)}%` : "0%";
+      }
+    };
     handler();
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
@@ -102,7 +111,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — kept last for natural tab order */}
           <button
             className="flex lg:hidden items-center justify-center w-10 h-10 rounded-lg text-dx-navy-700 hover:bg-dx-steel-50 transition-colors"
             onClick={() => setMenuOpen(true)}
@@ -112,6 +121,14 @@ export function Navbar() {
             <Menu size={22} strokeWidth={1.75} />
           </button>
         </div>
+
+        {/* Scroll progress bar */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 h-[2px] w-0 bg-dx-blue-500 transition-none"
+          ref={progressRef}
+          style={{ transition: "width 60ms linear" }}
+        />
       </header>
 
       {/* Mobile overlay + slide-in panel */}

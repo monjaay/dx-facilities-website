@@ -2,6 +2,7 @@ import { kpis } from "@/data/kpis";
 import { Container } from "@/components/layout/Container";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
 import { LogoWatermark } from "@/components/shared/LogoWatermark";
+import { KPICounter } from "@/components/shared/KPICounter";
 
 export function KPIBand() {
   return (
@@ -54,19 +55,8 @@ export function KPIBand() {
                 ].join(" ")}
                 style={{ borderColor: "rgba(255,255,255,0.08)" }}
               >
-                {/* Number */}
-                <div
-                  className="kpi-number text-white leading-none mb-2"
-                  style={{ fontSize: "clamp(48px, 5vw, 72px)" }}
-                >
-                  {kpi.value}
-                  <span
-                    className="text-dx-blue-300 ml-1.5"
-                    style={{ fontSize: "clamp(24px, 2.5vw, 36px)" }}
-                  >
-                    {kpi.unit}
-                  </span>
-                </div>
+                {/* Animated counter */}
+                <KPICounter value={kpi.value} unit={kpi.unit} />
 
                 {/* Divider accent */}
                 <div

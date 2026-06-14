@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { JsonLd, buildOrganizationSchema, buildWebSiteSchema } from "@/components/seo/JsonLd";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const BASE_URL = "https://www.dxfacilities.com";
 
@@ -103,6 +104,7 @@ export default function RootLayout({
         <JsonLd data={buildWebSiteSchema()} />
       </head>
       <body className="flex min-h-full flex-col">
+        <CustomCursor />
         {children}
       </body>
     </html>

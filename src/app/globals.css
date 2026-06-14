@@ -635,6 +635,101 @@ body {
   background-color: #22c55e;
 }
 
+/* ── Custom cursor ───────────────────────────────────────────── */
+
+@media (pointer: fine) {
+  * { cursor: none !important; }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-dx-blue-500);
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform, opacity;
+    transition: transform 80ms cubic-bezier(0.2, 0, 0, 1),
+                opacity  200ms ease;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(31, 104, 177, 0.4);
+    pointer-events: none;
+    z-index: 9998;
+    will-change: transform, opacity;
+    transition: transform 0ms linear,
+                border-color 180ms ease,
+                opacity      200ms ease;
+  }
+}
+
+/* ── Clip-path wipe reveal (for H2 titles) ───────────────────── */
+
+.reveal-clip {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 700ms cubic-bezier(0.2, 0, 0, 1);
+}
+.reveal-clip.is-visible {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* ── Card light sweep on dark cards ──────────────────────────── */
+
+.service-numbered-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.025) 50%,
+    transparent 70%
+  );
+  transition: left 560ms cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+.service-numbered-card:hover::before {
+  left: 140%;
+}
+
+/* ── Reduced motion — disable all non-essential animations ──── */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-clip {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  .service-numbered-card::before {
+    display: none;
+  }
+  .service-card-cta {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ── Services numbered cards (dark homepage section) ─────────── */
 
 .services-grid-dark {

@@ -14,6 +14,15 @@ const company = [
   { href: "/mentions-legales", label: "Mentions légales" },
 ];
 
+// Charte groupe Dextera : liens croisés vers les sites du groupe
+const group = [
+  { href: "https://dextera-group.com", label: "Dextera Group" },
+  { href: "https://dextera-group.com/subsidiaries/dextera-construction.html", label: "Dextera Construction" },
+  { href: "https://opaldx.com", label: "Opal DX" },
+  { href: "https://realestate.dextera-group.com", label: "Dextera Real Estate" },
+  { href: "https://dextera-group.com/subsidiaries/dx-management.html", label: "DX Management" },
+];
+
 // SVG paths for social icons (lucide-react doesn't include all social brands)
 function IconFacebook() {
   return (
@@ -75,7 +84,7 @@ export function Footer() {
           {footer.tagline}
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] gap-10">
           {/* Brand column */}
           <div className="flex flex-col gap-5">
             <Image
@@ -146,6 +155,26 @@ export function Footer() {
                   >
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Le groupe column (charte groupe Dextera) */}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-white">
+              Le groupe
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {group.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    rel="noopener"
+                    className="text-sm text-white/60 hover:text-white transition-colors duration-120 ease-standard"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

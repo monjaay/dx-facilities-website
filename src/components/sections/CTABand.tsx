@@ -11,16 +11,27 @@ export function CTABand() {
   return (
     <section className="relative bg-dx-blue-500 py-20 lg:py-24 overflow-hidden">
 
-      {/* Diagonal texture stripes */}
+      {/* Diagonal texture stripes (animated drift) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="dx-stripe absolute"
+          className="dx-stripe dx-stripe--drift absolute"
           style={{ width: "3px", height: "500px", top: "-80px", right: "24%", opacity: 0.14 }}
         />
         <div
-          className="dx-stripe absolute"
-          style={{ width: "2px", height: "400px", top: "-60px", right: "calc(24% + 30px)", opacity: 0.08 }}
+          className="dx-stripe dx-stripe--drift absolute"
+          style={{ width: "2px", height: "400px", top: "-60px", right: "calc(24% + 30px)", opacity: 0.08, animationDelay: "-6s" }}
         />
+      </div>
+
+      {/* Radial pulse rings — emanate from right side near CTA buttons */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute"
+        style={{ right: "8%", top: "50%", transform: "translateY(-50%)" }}
+      >
+        <div className="ctaband-ring" />
+        <div className="ctaband-ring" />
+        <div className="ctaband-ring" />
       </div>
 
       {/* Logo watermark */}

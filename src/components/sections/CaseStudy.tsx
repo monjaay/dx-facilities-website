@@ -1,6 +1,7 @@
 import { ImageSlot } from "@/components/shared/ImageSlot";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
 import { Container } from "@/components/layout/Container";
+import { BlueprintBg } from "@/components/shared/BlueprintBg";
 import contentData from "@/data/content.json";
 
 const { caseStudy, photos } = contentData;
@@ -9,11 +10,14 @@ export function CaseStudy() {
   return (
     <section className="dx-section bg-dx-navy-500 relative overflow-hidden">
 
-      {/* Diagonal stripe accent */}
+      {/* Animated blueprint background */}
+      <BlueprintBg variant="dark" />
+
+      {/* Diagonal stripe accent (animated drift) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="dx-stripe absolute"
-          style={{ width: "2px", height: "500px", top: "-60px", left: "55%", opacity: 0.08 }}
+          className="dx-stripe dx-stripe--drift absolute"
+          style={{ width: "2px", height: "500px", top: "-60px", left: "55%", opacity: 0.09 }}
         />
       </div>
 

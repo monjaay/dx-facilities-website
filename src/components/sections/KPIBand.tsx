@@ -8,15 +8,15 @@ export function KPIBand() {
   return (
     <section className="relative overflow-hidden bg-dx-navy-500 py-20 lg:py-24">
 
-      {/* Diagonal accent stripes */}
+      {/* Diagonal accent stripes (animated drift) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="dx-stripe absolute"
+          className="dx-stripe dx-stripe--drift absolute"
           style={{ width: "3px", height: "380px", top: "-60px", right: "18%", opacity: 0.14 }}
         />
         <div
-          className="dx-stripe absolute"
-          style={{ width: "2px", height: "300px", top: "-40px", right: "calc(18% + 26px)", opacity: 0.07 }}
+          className="dx-stripe dx-stripe--drift absolute"
+          style={{ width: "2px", height: "300px", top: "-40px", right: "calc(18% + 26px)", opacity: 0.07, animationDelay: "-8s" }}
         />
       </div>
 

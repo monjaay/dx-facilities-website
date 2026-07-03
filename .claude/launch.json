@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dx-facilities-dev",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d C:\\Users\\james\\dx-facilities-website && npm run dev"],
+      "port": 3000
+    }
+  ]
+}

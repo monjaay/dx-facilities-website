@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/layout/Container";
+import { BlueprintBg } from "@/components/shared/BlueprintBg";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 type Subsidiary = {
@@ -69,8 +70,9 @@ const subsidiaries: Subsidiary[] = [
 
 export function GroupEcosystem() {
   return (
-    <section className="dx-section bg-[#090d1a]">
-      <Container>
+    <section className="dx-section bg-[#090d1a] relative overflow-hidden">
+      <BlueprintBg variant="dark" />
+      <Container className="relative z-10">
         <div className="flex flex-col gap-14">
           {/* Header */}
           <div className="flex flex-col gap-4 max-w-2xl">

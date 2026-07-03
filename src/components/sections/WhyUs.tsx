@@ -1,6 +1,7 @@
 import { CheckCircle, BarChart2, Lightbulb, Headphones, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
+import { BlueprintBg } from "@/components/shared/BlueprintBg";
 import contentData from "@/data/content.json";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -21,15 +22,8 @@ export function WhyUs() {
       className="dx-section relative overflow-hidden"
       style={{ backgroundColor: "#080c18" }}
     >
-      {/* Subtle dot-grid texture */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(31,104,177,0.07) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
+      {/* Animated blueprint background (breathing dot grid + scan line + corner brackets) */}
+      <BlueprintBg variant="dark" />
 
       <Container className="relative z-10">
         <div className="flex flex-col gap-16">

@@ -611,10 +611,10 @@
   },
   "groupPage": {
     "hero": {
-      "eyebrow": "Groupe panafricain pluridisciplinaire",
+      "eyebrow": "Groupe sénégalais pluridisciplinaire",
       "title": "Building Legacies,",
       "titleAccent": "Managing Impact.",
-      "subtitle": "DEXTERA GROUP est un groupe panafricain pluridisciplinaire spécialisé dans le développement immobilier, la construction, la gestion d'actifs, les certifications environnementales et les services à haute valeur ajoutée.",
+      "subtitle": "DEXTERA GROUP est un groupe sénégalais pluridisciplinaire spécialisé dans le développement immobilier, la construction, la gestion d'actifs, les certifications environnementales et les services à haute valeur ajoutée.",
       "body": "Ancré en Afrique de l'Ouest, DEXTERA agit pour bâtir des infrastructures durables, intelligentes et accessibles, en plaçant l'innovation, la qualité et l'impact environnemental et social au cœur de ses projets."
     },
     "vision": {
@@ -624,8 +624,8 @@
       "pillars": [
         {
           "icon": "Globe",
-          "title": "Ancrage panafricain",
-          "body": "Basé en Afrique de l'Ouest, DEXTERA agit à l'échelle régionale pour bâtir des infrastructures durables et accessibles."
+          "title": "Ancrage sénégalais",
+          "body": "Basé au Sénégal, DEXTERA agit à l'échelle régionale pour bâtir des infrastructures durables et accessibles."
         },
         {
           "icon": "Layers",

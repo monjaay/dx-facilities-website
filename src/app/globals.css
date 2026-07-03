@@ -188,9 +188,16 @@ body {
   font-family: var(--font-sans);
   color: var(--color-dx-navy-700);
   background-color: var(--color-dx-paper);
+  background-image: radial-gradient(circle, rgba(31,104,177,0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  animation: body-grid-drift 55s linear infinite;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+@keyframes body-grid-drift {
+  to { background-position: 28px 28px; }
 }
 
 /* ── DX Utility Classes ───────────────────────────────────────── */
@@ -504,6 +511,15 @@ body {
   transform-origin: center;
 }
 
+/* Animated drift variant — stripes slowly slide along their own axis */
+@keyframes stripe-drift {
+  from { transform: rotate(-50deg) translateY(0); }
+  to   { transform: rotate(-50deg) translateY(-100px); }
+}
+.dx-stripe--drift {
+  animation: stripe-drift 20s linear infinite;
+}
+
 /* ── Dot grid texture ─────────────────────────────────────────── */
 .dx-dot-grid {
   background-image: radial-gradient(circle, rgba(31, 104, 177, 0.12) 1px, transparent 1px);
@@ -705,9 +721,31 @@ body {
   left: 140%;
 }
 
+/* ── CTABand radial pulse rings ──────────────────────────────── */
+
+@keyframes ctaband-ring-out {
+  from { transform: scale(0.55); opacity: 0.55; }
+  to   { transform: scale(2.4);  opacity: 0; }
+}
+.ctaband-ring {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  pointer-events: none;
+  animation: ctaband-ring-out 3.8s cubic-bezier(0.2, 0, 0.7, 1) infinite;
+}
+.ctaband-ring:nth-child(2) { animation-delay: 1.27s; }
+.ctaband-ring:nth-child(3) { animation-delay: 2.53s; }
+
 /* ── Reduced motion — disable all non-essential animations ──── */
 
 @media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none !important;
+    background-image: none !important;
+  }
   .reveal,
   .reveal-left,
   .reveal-right,
@@ -727,6 +765,12 @@ body {
   .service-card-cta {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .dx-stripe--drift {
+    animation: none !important;
+  }
+  .ctaband-ring {
+    display: none !important;
   }
 }
 

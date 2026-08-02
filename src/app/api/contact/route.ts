@@ -7,7 +7,39 @@ type ContactBody = {
   phone?: unknown;
   service?: unknown;
   message?: unknown;
+  consent?: unknown;
+  // Anti-spam fields (must match ContactForm.tsx)
+  website?: unknown; // honeypot — real users never fill this
+  elapsedMs?: unknown; // time between form render and submit
 };
+
+// Minimum time (ms) a human needs to fill the form. Faster = bot.
+const MIN_FILL_MS = 3000;
+
+// Detect machine-generated gibberish (random-case / consonant-soup strings)
+// used by spam bots. Conservative: only flags a single long token with an
+// abnormally high upper/lower case-alternation ratio, so real names and
+// sentences (which contain spaces and normal casing) are never caught.
+function looksLikeGibberish(value: string): boolean {
+  const longestToken = value
+    .split(/\s+/)
+    .reduce((longest, token) => (token.length > longest.length ? token : longest), "");
+
+  if (longestToken.length < 10) return false;
+
+  const letters = longestToken.replace(/[^a-zA-Z]/g, "");
+  if (letters.length < 10) return false;
+
+  let caseTransitions = 0;
+  for (let i = 1; i < letters.length; i++) {
+    const prevUpper = letters[i - 1] >= "A" && letters[i - 1] <= "Z";
+    const currUpper = letters[i] >= "A" && letters[i] <= "Z";
+    if (prevUpper !== currUpper) caseTransitions++;
+  }
+
+  // Real text almost never alternates case on 40%+ of adjacent letter pairs.
+  return caseTransitions / (letters.length - 1) > 0.4;
+}
 
 // Build the HTML email body
 function buildEmailHtml(data: {
@@ -81,6 +113,24 @@ export async function POST(request: NextRequest) {
     const phone = typeof body.phone === "string" ? body.phone.trim() : "";
     const service = typeof body.service === "string" ? body.service.trim() : "";
     const message = typeof body.message === "string" ? body.message.trim() : "";
+    const consent = body.consent === true;
+    const honeypot = typeof body.website === "string" ? body.website.trim() : "";
+    const elapsedMs = typeof body.elapsedMs === "number" ? body.elapsedMs : null;
+
+    // --- Anti-spam gate ---
+    // On every spam signal we return a fake success (200) so bots believe the
+    // submission worked and don't adapt. Real users never hit these paths.
+    const spamSignals: string[] = [];
+    if (honeypot) spamSignals.push("honeypot");
+    if (!consent) spamSignals.push("no-consent"); // real form requires the CDP checkbox
+    if (elapsedMs !== null && elapsedMs < MIN_FILL_MS) spamSignals.push("too-fast");
+    if (looksLikeGibberish(name)) spamSignals.push("gibberish-name");
+    if (looksLikeGibberish(message)) spamSignals.push("gibberish-message");
+
+    if (spamSignals.length > 0) {
+      console.warn("Contact form spam blocked:", spamSignals.join(", "));
+      return NextResponse.json({ success: true });
+    }
 
     // Basic validation
     if (!name || !company || !email || !message) {

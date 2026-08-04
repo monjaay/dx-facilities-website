@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { services } from "@/data/services";
 
 type FormState = {
@@ -29,6 +29,15 @@ export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Anti-spam: honeypot field (bots fill it, humans never see it) and the
+  // timestamp when the form was first rendered (to detect instant bot submits).
+  const [website, setWebsite] = useState("");
+  const renderedAt = useRef<number | null>(null);
+
+  useEffect(() => {
+    renderedAt.current = Date.now();
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -51,7 +60,11 @@ export function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          website, // honeypot
+          elapsedMs: renderedAt.current ? Date.now() - renderedAt.current : null,
+        }),
       });
 
       if (res.ok) {
@@ -97,6 +110,31 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+      {/* Honeypot — visually hidden and off-screen. Real users never fill it;
+          spam bots that fill every field trip the server-side spam gate. */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          top: 0,
+          height: 0,
+          width: 0,
+          overflow: "hidden",
+        }}
+      >
+        <label htmlFor="website">Ne pas remplir ce champ</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className={labelClass}>

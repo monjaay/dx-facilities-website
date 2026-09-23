@@ -227,6 +227,15 @@ export function Footer() {
             </Link>
             <span className="text-white/20">·</span>
             <span>Membre de DEXTERA GROUP</span>
+            <span className="text-white/20">·</span>
+            <a
+              href="https://declictech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/30 hover:text-white/70 transition-colors duration-120"
+            >
+              Réalisé par DeclicTech — SEO &amp; Trafic qualifié
+            </a>
           </div>
         </div>
       </div>

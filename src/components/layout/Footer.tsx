@@ -234,7 +234,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-white/30 hover:text-white/70 transition-colors duration-120"
             >
-              Réalisé par DeclicTech
+              Réalisé par DeclicTech — SEO &amp; Trafic qualifié
             </a>
           </div>
         </div>

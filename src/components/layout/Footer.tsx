@@ -232,9 +232,10 @@ export function Footer() {
               href="https://declictech.com"
               target="_blank"
               rel="noopener noreferrer"
+              title="SEO & Trafic qualifié"
               className="text-white/30 hover:text-white/70 transition-colors duration-120"
             >
-              Réalisé par DeclicTech — SEO &amp; Trafic qualifié
+              Réalisé par DeclicTech
             </a>
           </div>
         </div>

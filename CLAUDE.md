@@ -117,3 +117,21 @@ Référence complète : @docs/DESIGN_SYSTEM.md
 - Mobile : +221 77 547 03 46
 - Adresse : Rte de l'aéroport, lot N°88106, Yoff ONOMO, Dakar
 - Email : info@dxfacilities.com
+
+## Périmètre du projet — un dépôt = un projet
+
+Ce dépôt est **UNIQUEMENT** le site marketing **DX Facilities**. Il n'a rien à
+voir avec les autres sites du propriétaire (ex. Declic Daraa, le site de Dan
+Jager).
+
+- Si l'utilisateur, au fil d'une conversation, aborde un sujet qui concerne
+  **un autre projet que DX Facilities**, le **prévenir explicitement** en tête
+  de réponse (bandeau « ⚠️ Recadrage : ceci ne concerne pas DX Facilities »)
+  et demander s'il faut continuer ici ou basculer dans le bon dépôt/fil,
+  **avant** d'agir. Le propriétaire gère plusieurs projets et souhaite éviter
+  les confusions.
+
+## Journal des modifications
+
+À **chaque** modification livrée sur ce dépôt, ajouter une entrée datée dans la
+section « Journal des modifications » de `README.md` (date, description, PR).
